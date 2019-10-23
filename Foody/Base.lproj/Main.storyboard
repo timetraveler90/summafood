@@ -67,7 +67,9 @@
                     <connections>
                         <outlet property="imageView" destination="JF3-HM-8ZS" id="MeT-2n-yNv"/>
                         <outlet property="loginButton" destination="rsX-DP-WEd" id="dDF-Et-mPT"/>
+                        <outlet property="passwordTextField" destination="r6M-An-mJu" id="Qkm-xo-PcE"/>
                         <outlet property="showPasswordButton" destination="T7A-X9-UAP" id="aO7-gk-ZHK"/>
+                        <outlet property="usernameTextField" destination="cuh-UQ-ZDq" id="fwl-d1-2hc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -87,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Daa-MH-KwJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="503" y="106"/>
+            <point key="canvasLocation" x="1149" y="115"/>
         </scene>
     </scenes>
 </document>
