@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class LoginViewController: UIViewController {
 
@@ -15,9 +16,21 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var loginButton: UIButton!
 	@IBOutlet weak var imageView: UIImageView!
 	@IBOutlet weak var showPasswordButton: UIButton!
-	var isKeyboardAppear = false
+	let keychainUsername = "sopho_username"
+	let keychainPassword = "sopho_password"
 
 	@IBAction func loginButtonPressed(_ sender: Any) {
+
+		guard let username = usernameTextField?.text,
+		      let password = passwordTextField?.text else { return }
+
+		self.usernameTextField?.resignFirstResponder()
+		self.passwordTextField?.resignFirstResponder()
+		self.view.layoutIfNeeded()
+
+		let keychain = KeychainSwift()
+		keychain.set(username.replacingOccurrences(of: " ", with: ""), forKey: keychainUsername, withAccess: .accessibleAlways)
+		keychain.set(password.replacingOccurrences(of: " ", with: ""), forKey: keychainPassword, withAccess: .accessibleAlways)
 	}
 
 	@IBAction func showPasswordPressed(_ sender: UIButton) {
