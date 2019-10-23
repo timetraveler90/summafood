@@ -29,8 +29,16 @@ class LoginViewController: UIViewController {
 		self.view.layoutIfNeeded()
 
 		let keychain = KeychainSwift()
-		keychain.set(username.replacingOccurrences(of: " ", with: ""), forKey: keychainUsername, withAccess: .accessibleAlways)
-		keychain.set(password.replacingOccurrences(of: " ", with: ""), forKey: keychainPassword, withAccess: .accessibleAlways)
+		if keychain.set(username.replacingOccurrences(of: " ", with: ""), forKey: keychainUsername, withAccess: .accessibleAlways) {
+
+		} else {
+			print("we had a problem saving your username in the keychain")
+		}
+		if keychain.set(password.replacingOccurrences(of: " ", with: ""), forKey: keychainPassword, withAccess: .accessibleAlways) {
+
+		} else {
+			print("we had a problem saving your password in the keychain")
+		}
 	}
 
 	@IBAction func showPasswordPressed(_ sender: UIButton) {
