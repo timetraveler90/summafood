@@ -19,6 +19,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsX-DP-WEd">
                                 <rect key="frame" x="107" y="752" width="164" height="30"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nyC-Kk-jYa"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JF3-HM-8ZS">
                                 <rect key="frame" x="20" y="44" width="374" height="377.5"/>
@@ -39,6 +42,9 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="rww-UF-ccg"/>
                                 </constraints>
                                 <state key="normal" title="Show"/>
+                                <connections>
+                                    <action selector="showPasswordPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U2U-Pz-nM1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

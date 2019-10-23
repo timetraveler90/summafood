@@ -15,16 +15,41 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var loginButton: UIButton!
 	@IBOutlet weak var imageView: UIImageView!
 	@IBOutlet weak var showPasswordButton: UIButton!
+	var isKeyboardAppear = false
+
+	@IBAction func loginButtonPressed(_ sender: Any) {
+	}
+
+	@IBAction func showPasswordPressed(_ sender: UIButton) {
+		sender.isSelected = !sender.isSelected
+		if sender.isSelected {
+			self.passwordTextField?.isSecureTextEntry = false
+		} else {
+			self.passwordTextField?.isSecureTextEntry = true
+		}
+	}
 
   override func viewDidLoad() {
 		super.viewDidLoad()
 		prepareKeyboardInteractions()
+		prepareUI()
 
 		let tapToDismissKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(
 			target: self,
 			action: #selector(LoginViewController.dismissKeyboard)
 		)
 		view.addGestureRecognizer(tapToDismissKeyboard)
+	}
+
+	func prepareUI() {
+
+		usernameTextField.textContentType = .username
+		usernameTextField.keyboardType = .emailAddress
+		usernameTextField.keyboardAppearance = .dark
+		usernameTextField.clearButtonMode = .whileEditing
+
+		passwordTextField.textContentType = .password
+		passwordTextField.keyboardAppearance = .dark
 	}
 
 	private func prepareKeyboardInteractions() {
@@ -52,17 +77,15 @@ class LoginViewController: UIViewController {
 
 	@objc func keyboardWillShowNotification(notification: NSNotification) {
 		if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-			if self.view.frame.origin.y == 0{
+			if self.view.frame.origin.y == 0 {
 				self.view.frame.origin.y -= keyboardSize.height
 			}
 		}
 	}
 
 	@objc func keyboardWillHideNotification(notification: NSNotification) {
-		if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-			if self.view.frame.origin.y != 0{
-				self.view.frame.origin.y += keyboardSize.height
-			}
+		if self.view.frame.origin.y != 0 {
+			self.view.frame.origin.y = 0
 		}
 	}
 
