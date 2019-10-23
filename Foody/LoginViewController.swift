@@ -71,6 +71,8 @@ class LoginViewController: UIViewController {
 
 		passwordTextField.textContentType = .password
 		passwordTextField.keyboardAppearance = .dark
+
+		loginButton.backgroundColor = .orange
 	}
 
 	private func prepareKeyboardInteractions() {

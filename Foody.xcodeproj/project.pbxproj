@@ -3,12 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5202FD92235EEAC70057FD8B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202FD91235EEAC70057FD8B /* LoginViewController.swift */; };
 		5202FD94235EEDD60057FD8B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202FD93235EEDD60057FD8B /* MenuViewController.swift */; };
+		5208077A236089DC008ED751 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52080779236089DC008ED751 /* OrderViewController.swift */; };
+		5208077C23608A93008ED751 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5208077B23608A93008ED751 /* SettingsViewController.swift */; };
 		520EDAC723153F25000B9078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520EDAC623153F25000B9078 /* AppDelegate.swift */; };
 		520EDACC23153F25000B9078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520EDACA23153F25000B9078 /* Main.storyboard */; };
 		520EDACE23153F28000B9078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 520EDACD23153F28000B9078 /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 /* Begin PBXFileReference section */
 		5202FD91235EEAC70057FD8B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5202FD93235EEDD60057FD8B /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		52080779236089DC008ED751 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		5208077B23608A93008ED751 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		520EDAC323153F25000B9078 /* Foody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foody.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		520EDAC623153F25000B9078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		520EDACB23153F25000B9078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 				520EDACA23153F25000B9078 /* Main.storyboard */,
 				5202FD91235EEAC70057FD8B /* LoginViewController.swift */,
 				5202FD93235EEDD60057FD8B /* MenuViewController.swift */,
+				52080779236089DC008ED751 /* OrderViewController.swift */,
+				5208077B23608A93008ED751 /* SettingsViewController.swift */,
 				520EDACD23153F28000B9078 /* Assets.xcassets */,
 				520EDACF23153F28000B9078 /* LaunchScreen.storyboard */,
 				520EDAD223153F28000B9078 /* Info.plist */,
@@ -88,7 +94,6 @@
 				A82D5D91EDED7DCCC3A3CAE0 /* Pods-Foody.debug.xcconfig */,
 				FFBCC11D54B14ECB2FCF2431 /* Pods-Foody.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -210,6 +215,8 @@
 				5202FD92235EEAC70057FD8B /* LoginViewController.swift in Sources */,
 				5202FD94235EEDD60057FD8B /* MenuViewController.swift in Sources */,
 				520EDAC723153F25000B9078 /* AppDelegate.swift in Sources */,
+				5208077C23608A93008ED751 /* SettingsViewController.swift in Sources */,
+				5208077A236089DC008ED751 /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
