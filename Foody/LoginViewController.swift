@@ -68,9 +68,26 @@ class LoginViewController: UIViewController {
 		usernameTextField.keyboardType = .emailAddress
 		usernameTextField.keyboardAppearance = .dark
 		usernameTextField.clearButtonMode = .whileEditing
+		usernameTextField.layer.cornerRadius = 15
+		usernameTextField.layer.borderColor = UIColor.blue.cgColor
+		usernameTextField.layer.borderWidth = 1
+		usernameTextField.clipsToBounds = true
 
 		passwordTextField.textContentType = .password
+		passwordTextField.layer.cornerRadius = 15
+		passwordTextField.clipsToBounds = true
+		passwordTextField.layer.borderColor = UIColor.blue.cgColor
+		passwordTextField.layer.borderWidth = 1
+		passwordTextField.borderStyle = .roundedRect
 		passwordTextField.keyboardAppearance = .dark
+
+		loginButton.layer.borderColor = UIColor.blue.cgColor
+		loginButton.layer.borderWidth = 1
+		loginButton.layer.cornerRadius = 15
+
+		imageView.layer.borderWidth = 1
+		imageView.layer.borderColor = UIColor.blue.cgColor
+		imageView.layer.cornerRadius = 15
 
 	}
 
