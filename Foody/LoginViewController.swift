@@ -72,7 +72,6 @@ class LoginViewController: UIViewController {
 		passwordTextField.textContentType = .password
 		passwordTextField.keyboardAppearance = .dark
 
-		loginButton.backgroundColor = .orange
 	}
 
 	private func prepareKeyboardInteractions() {
@@ -102,6 +101,7 @@ class LoginViewController: UIViewController {
 		if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
 			if self.view.frame.origin.y == 0 {
 				self.view.frame.origin.y -= keyboardSize.height
+				imageView.isHidden = true
 			}
 		}
 	}
@@ -109,6 +109,7 @@ class LoginViewController: UIViewController {
 	@objc func keyboardWillHideNotification(notification: NSNotification) {
 		if self.view.frame.origin.y != 0 {
 			self.view.frame.origin.y = 0
+			imageView.isHidden = false
 		}
 	}
 
