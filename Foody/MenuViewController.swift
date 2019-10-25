@@ -11,7 +11,7 @@ import UIKit
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 5
+		return 1
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -28,6 +28,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 		return cell
 	}
 
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 5
+	}
+
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return "Section \(section)"
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
