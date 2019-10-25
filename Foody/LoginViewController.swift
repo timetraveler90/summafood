@@ -39,6 +39,8 @@ class LoginViewController: UIViewController {
 		} else {
 			print("we had a problem saving your password in the keychain")
 		}
+
+		self.performSegue(withIdentifier: "tabBarSegue", sender: nil)
 	}
 
 	@IBAction func showPasswordPressed(_ sender: UIButton) {
