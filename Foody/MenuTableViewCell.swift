@@ -26,9 +26,9 @@ class MenuTableViewCell: UITableViewCell {
 }
 
 extension MenuTableViewCell {
-	func setCollectionViewDataSourceDelegate <D: UICollectionViewDelegate & UICollectionViewDataSource> (_ dataSoruceDelegate: D, forRow row: Int) {
-		clCollectionView.delegate = dataSoruceDelegate
-		clCollectionView.dataSource = dataSoruceDelegate
+	func setCollectionViewDataSourceDelegate <D: UICollectionViewDelegate & UICollectionViewDataSource> (_ dataSourceDelegate: D, forRow row: Int) {
+		clCollectionView.delegate = dataSourceDelegate
+		clCollectionView.dataSource = dataSourceDelegate
 
 		clCollectionView.reloadData()
 	}

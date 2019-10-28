@@ -110,14 +110,92 @@
                     <view key="view" contentMode="scaleToFill" id="TBg-rd-dDA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AIm-BF-eWs">
+                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="OrderTableViewCell" rowHeight="100" id="B4v-rx-uxP" customClass="OrderTableViewCell" customModule="Foody" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B4v-rx-uxP" id="RCM-wW-bhS">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order day:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cq-zY-6v6">
+                                                    <rect key="frame" x="32" y="40" width="145" height="39"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="32"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="75V-7B-ufA" id="jvB-bt-yya"/>
+                                    <outlet property="delegate" destination="75V-7B-ufA" id="f7m-4W-H0U"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="AIm-BF-eWs" firstAttribute="leading" secondItem="BZc-bu-zuj" secondAttribute="leading" id="6zK-Tv-8na"/>
+                            <constraint firstItem="AIm-BF-eWs" firstAttribute="bottom" secondItem="BZc-bu-zuj" secondAttribute="bottom" id="JSx-Jn-hcO"/>
+                            <constraint firstItem="AIm-BF-eWs" firstAttribute="trailing" secondItem="BZc-bu-zuj" secondAttribute="trailing" id="dDp-Xk-BsV"/>
+                            <constraint firstItem="AIm-BF-eWs" firstAttribute="top" secondItem="BZc-bu-zuj" secondAttribute="top" id="j6M-Dw-qaV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BZc-bu-zuj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ordered food for week of:" id="Ke8-hW-Qkg"/>
+                    <connections>
+                        <outlet property="tableView" destination="AIm-BF-eWs" id="pQQ-PV-U0E"/>
+                        <segue destination="mHV-4Z-Lvv" kind="show" identifier="foodDetailsSegue" id="cbg-n0-bvi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84p-G6-DsU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3458" y="116"/>
+            <point key="canvasLocation" x="3457.971014492754" y="115.84821428571428"/>
+        </scene>
+        <!--Food Details View Controller-->
+        <scene sceneID="bxw-JN-xTh">
+            <objects>
+                <viewController id="mHV-4Z-Lvv" customClass="FoodDetailsViewController" customModule="Foody" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PNb-dc-4kw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bPg-og-w9c">
+                                <rect key="frame" x="0.0" y="56" width="414" height="359"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bPg-og-w9c" secondAttribute="height" multiplier="414:359" id="8qP-aL-U91"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOM-Tj-Ynb">
+                                <rect key="frame" x="90" y="499" width="234" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bPg-og-w9c" firstAttribute="leading" secondItem="Xry-KG-jXB" secondAttribute="leading" id="4rD-fT-QDv"/>
+                            <constraint firstItem="eOM-Tj-Ynb" firstAttribute="centerX" secondItem="bPg-og-w9c" secondAttribute="centerX" id="F2F-r7-wcR"/>
+                            <constraint firstItem="bPg-og-w9c" firstAttribute="trailing" secondItem="Xry-KG-jXB" secondAttribute="trailing" id="KZj-bc-fxq"/>
+                            <constraint firstItem="Xry-KG-jXB" firstAttribute="bottom" secondItem="eOM-Tj-Ynb" secondAttribute="bottom" constant="224" id="aOF-3P-jAX"/>
+                            <constraint firstItem="bPg-og-w9c" firstAttribute="top" secondItem="Xry-KG-jXB" secondAttribute="top" id="bZI-Lv-XA7"/>
+                            <constraint firstItem="eOM-Tj-Ynb" firstAttribute="top" secondItem="bPg-og-w9c" secondAttribute="bottom" constant="84" id="cgh-94-7MM"/>
+                            <constraint firstItem="eOM-Tj-Ynb" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Xry-KG-jXB" secondAttribute="leading" constant="90" id="y8H-E5-htv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xry-KG-jXB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iC4-s7-Zfb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mil-bO-BBu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4673.913043478261" y="-166.07142857142856"/>
         </scene>
         <!--Menu order for week of: -->
         <scene sceneID="gM9-sl-nDr">
