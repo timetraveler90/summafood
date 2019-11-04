@@ -34,18 +34,21 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 		return 5
 	}
 
-//	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//		return "Section \(section)"
-//	}
 
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let headerView = UIView()
 		headerView.backgroundColor = UIColor.clear
+		let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width:
+			   tableView.bounds.size.width, height: 28))
+		   headerLabel.textColor = UIColor.black
+		   headerLabel.text = "\(section)"
+		   headerLabel.textAlignment = .center
+		   headerView.addSubview(headerLabel)
 		return headerView
 	}
 
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		return 20
+		return 25
 	}
 
     override func viewDidLoad() {
