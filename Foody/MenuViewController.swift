@@ -10,6 +10,8 @@ import UIKit
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
 
+	@IBOutlet weak var tableView: UITableView!
+
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 1
 	}
@@ -32,12 +34,23 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 		return 5
 	}
 
-	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return "Section \(section)"
+//	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//		return "Section \(section)"
+//	}
+
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let headerView = UIView()
+		headerView.backgroundColor = UIColor.clear
+		return headerView
+	}
+
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 20
 	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		tableView.separatorStyle = .none
     }
 
 
