@@ -8,6 +8,7 @@
 
 import UIKit
 import KeychainSwift
+import Alamofire
 
 class LoginViewController: UIViewController {
 
@@ -18,29 +19,38 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var showPasswordButton: UIButton!
 	let keychainUsername = "sopho_username"
 	let keychainPassword = "sopho_password"
+	let url = "http://uc-dev.voiceworks.com:4000/external/signin"
+
+
+	typealias WebServerResponse = ([[String:Any]]?, Error?) -> Void
 
 	@IBAction func loginButtonPressed(_ sender: Any) {
-
+		
 		guard let username = usernameTextField?.text,
 		      let password = passwordTextField?.text else { return }
+
+		let params = [ "username" : username,
+		"password": password]
 
 		self.usernameTextField?.resignFirstResponder()
 		self.passwordTextField?.resignFirstResponder()
 		self.view.layoutIfNeeded()
 
 		let keychain = KeychainSwift()
-		if keychain.set(username.replacingOccurrences(of: " ", with: ""), forKey: keychainUsername, withAccess: .accessibleAlways) {
+		keychain.set(username.replacingOccurrences(of: " ", with: ""), forKey: keychainUsername, withAccess: .accessibleAlways)
+		keychain.set(password.replacingOccurrences(of: " ", with: ""), forKey: keychainPassword, withAccess: .accessibleAlways)
 
-		} else {
-			print("we had a problem saving your username in the keychain")
+		Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
+
+			switch response.result {
+			case .success:
+				self.performSegue(withIdentifier: "tabBarSegue", sender: nil)
+			case .failure(let error):
+				let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+				self.present(alert, animated: true, completion: nil)
+			}
 		}
-		if keychain.set(password.replacingOccurrences(of: " ", with: ""), forKey: keychainPassword, withAccess: .accessibleAlways) {
-
-		} else {
-			print("we had a problem saving your password in the keychain")
-		}
-
-		self.performSegue(withIdentifier: "tabBarSegue", sender: nil)
 	}
 
 	@IBAction func showPasswordPressed(_ sender: UIButton) {
