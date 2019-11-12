@@ -44,6 +44,7 @@ class LoginViewController: UIViewController {
 
 			switch response.result {
 			case .success:
+				print(response)
 				self.performSegue(withIdentifier: "tabBarSegue", sender: nil)
 			case .failure(let error):
 				let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
