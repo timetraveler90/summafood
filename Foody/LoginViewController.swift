@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
 		keychain.set(username.replacingOccurrences(of: " ", with: ""), forKey: keychainUsername, withAccess: .accessibleAlways)
 		keychain.set(password.replacingOccurrences(of: " ", with: ""), forKey: keychainPassword, withAccess: .accessibleAlways)
 
-		Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.prettyPrinted).responseString { response in
+		Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.prettyPrinted).responseJSON { response in
 
 			switch response.result {
 			case .success:
@@ -84,6 +84,7 @@ class LoginViewController: UIViewController {
 
 	func prepareUI() {
 
+		usernameTextField.delegate = self
 		usernameTextField.textContentType = .username
 		usernameTextField.keyboardType = .emailAddress
 		usernameTextField.keyboardAppearance = .dark
@@ -93,6 +94,7 @@ class LoginViewController: UIViewController {
 		usernameTextField.layer.borderWidth = 1
 		usernameTextField.clipsToBounds = true
 
+		passwordTextField.delegate = self
 		passwordTextField.textContentType = .password
 		passwordTextField.layer.cornerRadius = 15
 		passwordTextField.clipsToBounds = true
@@ -150,6 +152,22 @@ class LoginViewController: UIViewController {
 		}
 	}
 
+}
+
+extension LoginViewController: UITextFieldDelegate {
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		self.view.layoutIfNeeded()
+
+		if textField == self.usernameTextField {
+			self.passwordTextField?.becomeFirstResponder()
+			self.view.layoutIfNeeded()
+		} else if textField == self.passwordTextField {
+			loginButtonPressed(textField)
+		}
+
+		return true
+	}
 }
 
 extension String {
