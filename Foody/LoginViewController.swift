@@ -40,11 +40,16 @@ class LoginViewController: UIViewController {
 		keychain.set(username.replacingOccurrences(of: " ", with: ""), forKey: keychainUsername, withAccess: .accessibleAlways)
 		keychain.set(password.replacingOccurrences(of: " ", with: ""), forKey: keychainPassword, withAccess: .accessibleAlways)
 
-		Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON { response in
+		Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.prettyPrinted).responseString { response in
 
 			switch response.result {
 			case .success:
-				print(response)
+
+				//taking user id from the response of the server and putting it in userdefaults
+				let responseString = response.description
+				let userId = responseString.digits
+				UserDefaults.standard.set(userId, forKey: "userID")
+				
 				self.performSegue(withIdentifier: "tabBarSegue", sender: nil)
 			case .failure:
 				let alert = UIAlertController(title: "Error", message: "Looks like your username or password is wrong or the fields are empty. \n Please try again!", preferredStyle: .alert)
@@ -145,4 +150,11 @@ class LoginViewController: UIViewController {
 		}
 	}
 
+}
+
+extension String {
+    private static var digits = UnicodeScalar("0")..."9"
+    var digits: String {
+        return String(unicodeScalars.filter(String.digits.contains))
+    }
 }

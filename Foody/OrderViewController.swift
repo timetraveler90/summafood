@@ -12,7 +12,7 @@ import Alamofire
 class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 	@IBOutlet weak var tableView: UITableView!
-	let url = "http://uc-dev.voiceworks.com:4000/external/ordered_food/12"
+	let userId = UserDefaults.standard.string(forKey: "userID") ?? ""
 	private var orders = [Order]()
 
 
@@ -45,7 +45,7 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
 	fileprivate func fetchJSON() {
-		let urlString = "http://uc-dev.voiceworks.com:4000/external/ordered_food/12"
+		let urlString = "http://uc-dev.voiceworks.com:4000/external/ordered_food/\(userId)"
 		guard let url = URL(string: urlString) else { return }
 
 		URLSession.shared.dataTask(with: url) { (data, _, err) in
