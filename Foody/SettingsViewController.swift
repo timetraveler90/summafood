@@ -11,7 +11,13 @@ import UIKit
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
 
 	@IBOutlet weak var tableView: UITableView!
-	
+	@IBOutlet weak var logoutButton: UIButton!
+
+	@IBAction func logoutButtonPressed(_ sender: Any) {
+		// removing of userId after logout
+		UserDefaults.standard.setValue(nil, forKey: "userID")
+	}
+
 	override func viewDidLoad() {
         super.viewDidLoad()
 		tableView.tableFooterView = UIView(frame: .zero)

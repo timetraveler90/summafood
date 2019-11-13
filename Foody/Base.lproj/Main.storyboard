@@ -168,6 +168,9 @@
                                     <constraint firstAttribute="height" constant="60" id="9lX-h2-8pT"/>
                                 </constraints>
                                 <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="hXy-87-Cwr" eventType="touchUpInside" id="WOO-fm-60O"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -183,6 +186,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="NJ7-X3-jEQ"/>
                     <connections>
+                        <outlet property="logoutButton" destination="SwZ-MP-quS" id="mlc-Ju-bs1"/>
                         <outlet property="tableView" destination="bPY-eB-Dbu" id="vle-BB-ea0"/>
                     </connections>
                 </viewController>
