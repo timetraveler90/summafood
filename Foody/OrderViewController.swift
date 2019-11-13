@@ -112,6 +112,21 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		self.performSegue(withIdentifier: "foodDetailsSegue", sender: nil)
 	}
 
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		switch section {
+			case 0: return "Monday"
+			case 1: return "Tuesday"
+			case 2: return "Wednesday"
+			case 3: return "Thursday"
+			case 4: return "Friday"
+			default: return ""
+		}
+	}
+
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 25
+	}
+
 }
 
 extension Date {

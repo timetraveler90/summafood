@@ -46,8 +46,8 @@ class LoginViewController: UIViewController {
 			case .success:
 				print(response)
 				self.performSegue(withIdentifier: "tabBarSegue", sender: nil)
-			case .failure(let error):
-				let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
+			case .failure:
+				let alert = UIAlertController(title: "Error", message: "Looks like your username or password is wrong or the fields are empty. \n Please try again!", preferredStyle: .alert)
 				alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
 				self.present(alert, animated: true, completion: nil)
 			}
@@ -58,8 +58,10 @@ class LoginViewController: UIViewController {
 		sender.isSelected = !sender.isSelected
 		if sender.isSelected {
 			self.passwordTextField?.isSecureTextEntry = false
+			showPasswordButton.setTitle("Hide", for: .normal)
 		} else {
 			self.passwordTextField?.isSecureTextEntry = true
+			showPasswordButton.setTitle("Show", for: .normal)
 		}
 	}
 
