@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
 				let responseString = response.description
 				let userId = responseString.digits
 				UserDefaults.standard.set(userId, forKey: "userID")
-				
+
 				self.performSegue(withIdentifier: "tabBarSegue", sender: nil)
 			case .failure:
 				let alert = UIAlertController(title: "Error", message: "Looks like your username or password is wrong or the fields are empty. \n Please try again!", preferredStyle: .alert)
@@ -156,11 +156,11 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		textField.resignFirstResponder()
-		self.view.layoutIfNeeded()
 
 		if textField == self.usernameTextField {
-			self.passwordTextField?.becomeFirstResponder()
+			DispatchQueue.main.async {
+				self.passwordTextField?.becomeFirstResponder()
+			}
 			self.view.layoutIfNeeded()
 		} else if textField == self.passwordTextField {
 			loginButtonPressed(textField)
