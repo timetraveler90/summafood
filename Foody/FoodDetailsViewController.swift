@@ -8,17 +8,31 @@
 
 import UIKit
 
-class FoodDetailsViewController: UIViewController {
+class FoodDetailsViewController: UIViewController, UIScrollViewDelegate {
 
 	@IBOutlet weak var foodImageView: UIImageView!
 	@IBOutlet weak var foodNameLabel: UILabel!
+	@IBOutlet weak var scrollView: UIScrollView!
+
 
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-		foodNameLabel.text = "Kurcina"
+		foodNameLabel.text = "Testerah!"
+		foodImageView.image = UIImage(imageLiteralResourceName: "foodExample")
+		scrollView.minimumZoomScale = 0.5
+		scrollView.maximumZoomScale = 4.0
+//		scrollView.zoomScale = 1.
+		scrollView.addSubview(foodImageView)
+		scrollView.delegate = self
     }
 
+	func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+		return foodImageView
+	}
+	func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+		self.scrollView.setZoomScale(1.0, animated: true)
+	}
 
 
 }

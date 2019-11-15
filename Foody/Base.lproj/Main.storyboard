@@ -266,14 +266,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bPg-og-w9c">
-                                <rect key="frame" x="0.0" y="56" width="414" height="359"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hj-Ub-wlh">
+                                <rect key="frame" x="0.0" y="56" width="414" height="323"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bPg-og-w9c">
+                                        <rect key="frame" x="0.0" y="-18" width="414" height="359"/>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="bPg-og-w9c" secondAttribute="height" multiplier="414:359" id="8qP-aL-U91"/>
+                                    <constraint firstItem="bPg-og-w9c" firstAttribute="centerY" secondItem="2hj-Ub-wlh" secondAttribute="centerY" id="EBk-Bd-aRa"/>
+                                    <constraint firstAttribute="width" secondItem="2hj-Ub-wlh" secondAttribute="height" multiplier="414:323" id="FHY-BA-HGR"/>
+                                    <constraint firstItem="bPg-og-w9c" firstAttribute="leading" secondItem="2hj-Ub-wlh" secondAttribute="leading" id="FnY-f7-bxg"/>
+                                    <constraint firstItem="bPg-og-w9c" firstAttribute="centerX" secondItem="2hj-Ub-wlh" secondAttribute="centerX" id="LRC-u0-Xh4"/>
+                                    <constraint firstItem="bPg-og-w9c" firstAttribute="top" secondItem="2hj-Ub-wlh" secondAttribute="top" constant="-18" id="a4h-SK-sKm"/>
+                                    <constraint firstAttribute="bottom" secondItem="bPg-og-w9c" secondAttribute="bottom" constant="-18" id="ddL-mq-ThM"/>
+                                    <constraint firstAttribute="trailing" secondItem="bPg-og-w9c" secondAttribute="trailing" id="iaF-XD-7Qb"/>
                                 </constraints>
-                            </imageView>
+                                <viewLayoutGuide key="contentLayoutGuide" id="FP8-95-UEY"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Wax-vP-g75"/>
+                            </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOM-Tj-Ynb">
-                                <rect key="frame" x="90" y="499" width="234" height="36"/>
+                                <rect key="frame" x="139" y="387" width="136" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -281,13 +294,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="bPg-og-w9c" firstAttribute="leading" secondItem="Xry-KG-jXB" secondAttribute="leading" id="4rD-fT-QDv"/>
-                            <constraint firstItem="Xry-KG-jXB" firstAttribute="bottom" secondItem="eOM-Tj-Ynb" secondAttribute="bottom" constant="224" id="CjT-PK-2L8"/>
-                            <constraint firstItem="bPg-og-w9c" firstAttribute="trailing" secondItem="Xry-KG-jXB" secondAttribute="trailing" id="KZj-bc-fxq"/>
-                            <constraint firstItem="bPg-og-w9c" firstAttribute="top" secondItem="Xry-KG-jXB" secondAttribute="top" id="bZI-Lv-XA7"/>
-                            <constraint firstItem="eOM-Tj-Ynb" firstAttribute="leading" secondItem="Xry-KG-jXB" secondAttribute="leading" constant="90" id="blJ-I7-dtc"/>
-                            <constraint firstItem="eOM-Tj-Ynb" firstAttribute="top" secondItem="bPg-og-w9c" secondAttribute="bottom" constant="84" id="cgh-94-7MM"/>
-                            <constraint firstItem="eOM-Tj-Ynb" firstAttribute="centerX" secondItem="bPg-og-w9c" secondAttribute="centerX" id="iVh-qt-Ydc"/>
+                            <constraint firstItem="eOM-Tj-Ynb" firstAttribute="top" relation="lessThanOrEqual" secondItem="bPg-og-w9c" secondAttribute="bottom" constant="60" id="ENP-rb-B9C"/>
+                            <constraint firstItem="2hj-Ub-wlh" firstAttribute="top" secondItem="Xry-KG-jXB" secondAttribute="top" id="FZj-Tp-JEK"/>
+                            <constraint firstItem="2hj-Ub-wlh" firstAttribute="trailing" secondItem="Xry-KG-jXB" secondAttribute="trailing" id="Jtf-no-5Uc"/>
+                            <constraint firstItem="eOM-Tj-Ynb" firstAttribute="centerY" secondItem="Xry-KG-jXB" secondAttribute="centerY" constant="-2.5" id="OWn-yz-PhZ"/>
+                            <constraint firstItem="eOM-Tj-Ynb" firstAttribute="leading" secondItem="Xry-KG-jXB" secondAttribute="leading" constant="139" id="XBc-WQ-L1V"/>
+                            <constraint firstItem="eOM-Tj-Ynb" firstAttribute="centerX" relation="greaterThanOrEqual" secondItem="2hj-Ub-wlh" secondAttribute="centerX" id="eZQ-c4-XId"/>
+                            <constraint firstItem="2hj-Ub-wlh" firstAttribute="leading" secondItem="Xry-KG-jXB" secondAttribute="leading" id="gtZ-mQ-amX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xry-KG-jXB"/>
                     </view>
@@ -295,6 +308,7 @@
                     <connections>
                         <outlet property="foodImageView" destination="bPg-og-w9c" id="2TA-KZ-Ae1"/>
                         <outlet property="foodNameLabel" destination="eOM-Tj-Ynb" id="wIv-CG-Wd0"/>
+                        <outlet property="scrollView" destination="2hj-Ub-wlh" id="kGg-Hz-x2z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mil-bO-BBu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
