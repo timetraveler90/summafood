@@ -89,7 +89,18 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
 		tableView.separatorStyle = .none
 		fetchJSON()
+		submit()
     }
+
+	fileprivate func submit() {
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .done, target: self, action: #selector(orderTheFood))
+	}
+
+	@objc func orderTheFood() {
+		let alert = UIAlertController(title: "Submited", message: "Submiting the form", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+		self.present(alert, animated: true, completion: nil)
+	}
 
 
 	fileprivate func fetchJSON() {
@@ -108,7 +119,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 				do {
 					self.availableFood = try [decoder.decode(Order.self, from: data)]
-					print(self.availableFood)
+					dump(self.availableFood)
 				} catch let jsonErr {
 					print("Failed to decode: ", jsonErr)
 				}

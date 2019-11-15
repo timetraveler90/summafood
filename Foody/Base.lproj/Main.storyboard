@@ -251,7 +251,7 @@
                     <navigationItem key="navigationItem" title="Ordered food for week of:" id="Ke8-hW-Qkg"/>
                     <connections>
                         <outlet property="tableView" destination="AIm-BF-eWs" id="pQQ-PV-U0E"/>
-                        <segue destination="mHV-4Z-Lvv" kind="show" id="cbg-n0-bvi"/>
+                        <segue destination="mHV-4Z-Lvv" kind="show" identifier="foodDetailsSegue" id="cbg-n0-bvi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84p-G6-DsU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -292,6 +292,10 @@
                         <viewLayoutGuide key="safeArea" id="Xry-KG-jXB"/>
                     </view>
                     <navigationItem key="navigationItem" id="iC4-s7-Zfb"/>
+                    <connections>
+                        <outlet property="foodImageView" destination="bPg-og-w9c" id="2TA-KZ-Ae1"/>
+                        <outlet property="foodNameLabel" destination="eOM-Tj-Ynb" id="wIv-CG-Wd0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mil-bO-BBu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

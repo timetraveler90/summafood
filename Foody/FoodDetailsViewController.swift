@@ -10,10 +10,15 @@ import UIKit
 
 class FoodDetailsViewController: UIViewController {
 
-    override func viewDidLoad() {
+	@IBOutlet weak var foodImageView: UIImageView!
+	@IBOutlet weak var foodNameLabel: UILabel!
+
+	override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+		foodNameLabel.text = "Kurcina"
     }
+
+
 
 }
