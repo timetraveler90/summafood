@@ -91,6 +91,7 @@
 				52AC4CED2382D4B000B6D468 /* Settings */,
 				52AC4CEC2382D4A100B6D468 /* Order */,
 				52AC4CEB2382D49100B6D468 /* Menu */,
+				520EDACA23153F25000B9078 /* Main.storyboard */,
 				520EDAC623153F25000B9078 /* AppDelegate.swift */,
 				52AC4CEF2382D4FE00B6D468 /* Utility */,
 			);
@@ -100,7 +101,6 @@
 		52AC4CEB2382D49100B6D468 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				520EDACA23153F25000B9078 /* Main.storyboard */,
 				5202FD93235EEDD60057FD8B /* MenuViewController.swift */,
 				5208077D2362F969008ED751 /* MenuTableViewCell.swift */,
 				5208077F2362F995008ED751 /* MenuCollectionViewCell.swift */,
