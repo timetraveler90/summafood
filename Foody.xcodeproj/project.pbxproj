@@ -87,12 +87,12 @@
 		520EDAC523153F25000B9078 /* Foody */ = {
 			isa = PBXGroup;
 			children = (
-				52AC4CEF2382D4FE00B6D468 /* Utility */,
 				52AC4CEE2382D4EB00B6D468 /* Login */,
 				52AC4CED2382D4B000B6D468 /* Settings */,
 				52AC4CEC2382D4A100B6D468 /* Order */,
 				52AC4CEB2382D49100B6D468 /* Menu */,
 				520EDAC623153F25000B9078 /* AppDelegate.swift */,
+				52AC4CEF2382D4FE00B6D468 /* Utility */,
 			);
 			path = Foody;
 			sourceTree = "<group>";
