@@ -27,8 +27,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 	// MARK: - AvailableFood
 	struct AvailableFood: Codable {
-		let wednesday, tuesday, thursday, monday: [Day]
-		let friday: [Day]
+		let wednesday, tuesday, thursday, monday, friday: [Day]
 
 		enum CodingKeys: String, CodingKey {
 			case wednesday = "Wednesday"
@@ -120,6 +119,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 				do {
 					self.availableFood = try [decoder.decode(Order.self, from: data)]
 					dump(self.availableFood)
+//					if let people = availableFood["wednesday"] as? [AvailableFood] {
+//						print(people.count)
+//					}
 				} catch let jsonErr {
 					print("Failed to decode: ", jsonErr)
 				}

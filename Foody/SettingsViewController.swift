@@ -7,15 +7,29 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
 
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var logoutButton: UIButton!
+	let keychainUsername = "sopho_username"
+	let keychainPassword = "sopho_password"
 
 	@IBAction func logoutButtonPressed(_ sender: Any) {
 		// removing of userId after logout
 		UserDefaults.standard.setValue(nil, forKey: "userID")
+
+		let keychain = KeychainSwift()
+		keychain.delete(keychainUsername)
+		keychain.delete(keychainPassword)
+		keychain.clear()
+
+		let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+		let loginVC = mainStoryBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+		let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+		appDel.window?.rootViewController = loginVC 
+
 	}
 
 	override func viewDidLoad() {
