@@ -13,8 +13,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var logoutButton: UIButton!
-	let keychainUsername = "sopho_username"
-	let keychainPassword = "sopho_password"
+	let keychainUsername = "username"
+	let keychainPassword = "password"
 
 	@IBAction func logoutButtonPressed(_ sender: Any) {
 		// removing of userId after logout

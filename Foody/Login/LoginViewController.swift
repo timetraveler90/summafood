@@ -17,8 +17,8 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var loginButton: UIButton!
 	@IBOutlet weak var imageView: UIImageView!
 	@IBOutlet weak var showPasswordButton: UIButton!
-	let keychainUsername = "sopho_username"
-	let keychainPassword = "sopho_password"
+	let keychainUsername = "username"
+	let keychainPassword = "password"
 	let url = "http://uc-dev.voiceworks.com:4000/external/signin"
 
 
@@ -69,6 +69,7 @@ class LoginViewController: UIViewController {
 			showPasswordButton.setTitle("Show", for: .normal)
 		}
 	}
+
 
   override func viewDidLoad() {
 		super.viewDidLoad()

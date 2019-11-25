@@ -7,14 +7,45 @@
 //
 
 import UIKit
+import Alamofire
+import KeychainSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
+	let url = "http://uc-dev.voiceworks.com:4000/external/signin"
+	private let keychain = KeychainSwift()
+	let keychainUsername = "username"
+	let keychainPassword = "password"
+
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		let username = keychain.get(keychainUsername)
+		let password = keychain.get(keychainPassword)
+
+		let params = [ "username" : username,
+		"password": password]
+
+		Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.prettyPrinted).responseJSON { response in
+
+			switch response.result {
+			case .success:
+				//taking user id from the response of the server and putting it in userdefaults
+				let responseString = response.description
+				let userId = responseString.digits
+				UserDefaults.standard.set(userId, forKey: "userID")
+
+				let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+				let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "tabBar") as UIViewController
+						self.window = UIWindow(frame: UIScreen.main.bounds)
+						self.window?.rootViewController = initialViewControlleripad
+						self.window?.makeKeyAndVisible()
+			case .failure:
+				print("Keychain doesn't have stored username and password!")
+			}
+		}
 		return true
 	}
 
@@ -42,4 +73,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
