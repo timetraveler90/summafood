@@ -13,7 +13,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 	@IBOutlet weak var tableView: UITableView!
 	let userId = UserDefaults.standard.string(forKey: "userID") ?? ""
 	private var menu: Menu?
-	
 
 
 
@@ -69,7 +68,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 				return menu.availableFood.friday.count
 			}
 		}
-		return 0
+		return 5
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -78,7 +77,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 	}
 
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return 5
+		if let menu = menu {
+			let allDays = [menu.availableFood.monday, menu.availableFood.tuesday, menu.availableFood.wednesday, menu.availableFood.thursday, menu.availableFood.friday]
+			return allDays.count
+		}
+		return 3
 	}
 
 
@@ -131,13 +134,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 				let decoder = JSONDecoder()
 
 				do {
-					let downloadedMenu = try decoder.decode(Menu.self, from: data)
-					self.menu = downloadedMenu
-
-					if let menu = self.menu {
-						print(menu.availableFood.monday.count)
-					}
-					self.tableView.reloadData()
+					self.menu = try decoder.decode(Menu.self, from: data)
 
 				} catch let jsonErr {
 					print("Failed to decode: ", jsonErr)
