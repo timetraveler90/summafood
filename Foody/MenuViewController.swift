@@ -12,22 +12,23 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 	@IBOutlet weak var tableView: UITableView!
 	let userId = UserDefaults.standard.string(forKey: "userID") ?? ""
-	private var availableFood = [Order]()
+	private var menu: Menu?
+	
 
-	struct Order: Codable {
-		let permission: String
-		let check: Int
+
+
+	// MARK: - Menu
+	struct Menu: Codable {
 		let availableFood: AvailableFood
 
 		enum CodingKeys: String, CodingKey {
-			case permission, check
 			case availableFood = "available_food"
 		}
 	}
 
 	// MARK: - AvailableFood
 	struct AvailableFood: Codable {
-		let wednesday, tuesday, thursday, monday, friday: [Day]
+		let wednesday, tuesday, thursday, monday, friday: [FoodName]
 
 		enum CodingKeys: String, CodingKey {
 			case wednesday = "Wednesday"
@@ -39,7 +40,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 	}
 
 	// MARK: - Day
-	struct Day: Codable {
+	struct FoodName: Codable {
 		let name: String
 		let id: Int
 	}
@@ -55,7 +56,20 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 	}
 
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 10
+		if let menu = menu {
+			if section == 0 {
+				return menu.availableFood.monday.count
+			} else if section == 1 {
+				return menu.availableFood.tuesday.count
+			} else if section == 2 {
+				return menu.availableFood.wednesday.count
+			} else if section == 3 {
+				return menu.availableFood.thursday.count
+			} else if section == 4 {
+				return menu.availableFood.friday.count
+			}
+		}
+		return 0
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -87,8 +101,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 		tableView.separatorStyle = .none
-		fetchJSON()
 		submit()
+		fetchJSON()
     }
 
 	fileprivate func submit() {
@@ -117,11 +131,14 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 				let decoder = JSONDecoder()
 
 				do {
-					self.availableFood = try [decoder.decode(Order.self, from: data)]
-					dump(self.availableFood)
-//					if let people = availableFood["wednesday"] as? [AvailableFood] {
-//						print(people.count)
-//					}
+					let downloadedMenu = try decoder.decode(Menu.self, from: data)
+					self.menu = downloadedMenu
+
+					if let menu = self.menu {
+						print(menu.availableFood.monday.count)
+					}
+					self.tableView.reloadData()
+
 				} catch let jsonErr {
 					print("Failed to decode: ", jsonErr)
 				}

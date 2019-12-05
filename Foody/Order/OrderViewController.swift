@@ -60,7 +60,6 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
 				do {
 					self.orders = try [decoder.decode(Order.self, from: data)]
-					print(self.orders.capacity)
 
 					self.tableView.reloadData()
 				} catch let jsonErr {
