@@ -68,7 +68,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 				return menu.availableFood.friday.count
 			}
 		}
-		return 5
+		return 30
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -81,7 +81,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 			let allDays = [menu.availableFood.monday, menu.availableFood.tuesday, menu.availableFood.wednesday, menu.availableFood.thursday, menu.availableFood.friday]
 			return allDays.count
 		}
-		return 3
+		return 5
 	}
 
 
