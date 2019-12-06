@@ -91,7 +91,19 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 		let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width:
 			   tableView.bounds.size.width, height: 28))
 		   headerLabel.textColor = UIColor.black
-		   headerLabel.text = "\(section)"
+
+		if section == 0 {
+			headerLabel.text = "Monday"
+		} else if section == 1 {
+			headerLabel.text = "Tuesday"
+		} else if section == 2 {
+			headerLabel.text = "Wednesday"
+		} else if section == 3 {
+			headerLabel.text = "Thursday"
+		} else if section == 4 {
+			headerLabel.text = "Friday"
+		}
+
 		   headerLabel.textAlignment = .center
 		   headerView.addSubview(headerLabel)
 		return headerView
