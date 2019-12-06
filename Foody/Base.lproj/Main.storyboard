@@ -342,7 +342,7 @@
                                                             <rect key="frame" x="8" y="8" width="358" height="194"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="164" id="bFs-Wh-OWM"/>
+                                                                <constraint firstAttribute="height" constant="194" id="bFs-Wh-OWM"/>
                                                             </constraints>
                                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A9e-qD-ngo">
                                                                 <size key="itemSize" width="164" height="164"/>
@@ -360,7 +360,21 @@
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAz-f3-U1W">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="164" height="164"/>
+                                                                                <subviews>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the longest name in the history for some food" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9U3-ek-JkO">
+                                                                                        <rect key="frame" x="8" y="8" width="148" height="148"/>
+                                                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="24"/>
+                                                                                        <nil key="textColor"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                </subviews>
                                                                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="9U3-ek-JkO" firstAttribute="bottom" secondItem="yAz-f3-U1W" secondAttribute="bottomMargin" id="3Xe-JC-PJi"/>
+                                                                                    <constraint firstItem="9U3-ek-JkO" firstAttribute="top" secondItem="yAz-f3-U1W" secondAttribute="topMargin" id="IZX-7U-fQ2"/>
+                                                                                    <constraint firstItem="9U3-ek-JkO" firstAttribute="trailing" secondItem="yAz-f3-U1W" secondAttribute="trailingMargin" id="YzA-eh-rZJ"/>
+                                                                                    <constraint firstItem="9U3-ek-JkO" firstAttribute="leading" secondItem="yAz-f3-U1W" secondAttribute="leadingMargin" id="yWD-Tw-88t"/>
+                                                                                </constraints>
                                                                             </view>
                                                                         </subviews>
                                                                         <constraints>
