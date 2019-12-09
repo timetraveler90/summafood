@@ -51,6 +51,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
+
 		return cell
 	}
 
@@ -73,6 +74,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCollectionViewCell", for: indexPath) as! MenuCollectionViewCell
+		cell.layer.cornerRadius = 8
 		return cell
 	}
 
