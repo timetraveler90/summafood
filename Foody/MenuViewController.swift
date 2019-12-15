@@ -105,7 +105,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 			let allDays = [menu.availableFood.monday, menu.availableFood.tuesday, menu.availableFood.wednesday, menu.availableFood.thursday, menu.availableFood.friday]
 			return allDays.count
 		}
-		return 5
+		return 0
 	}
 
 
