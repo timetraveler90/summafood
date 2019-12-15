@@ -82,14 +82,22 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 			if collectionView.tag == 0 {
 				let foodName = menu.availableFood.monday[indexPath.item]
 				cell.foodNameLabel.text = foodName.name
+			} else if collectionView.tag == 1 {
+				let foodName = menu.availableFood.tuesday[indexPath.item]
+				cell.foodNameLabel.text = foodName.name
+			} else if collectionView.tag == 2 {
+				let foodName = menu.availableFood.wednesday[indexPath.item]
+				cell.foodNameLabel.text = foodName.name
+			} else if collectionView.tag == 3 {
+				let foodName = menu.availableFood.thursday[indexPath.item]
+				cell.foodNameLabel.text = foodName.name
+			} else if collectionView.tag == 4 {
+				let foodName = menu.availableFood.friday[indexPath.item]
+				cell.foodNameLabel.text = foodName.name
 			}
 		}
 
 		return cell
-	}
-
-	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		<#code#>
 	}
 
 	func numberOfSections(in tableView: UITableView) -> Int {
