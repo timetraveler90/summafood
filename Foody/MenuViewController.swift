@@ -51,31 +51,45 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
-
+		cell.clCollectionView.dataSource = self
+		cell.clCollectionView.tag = indexPath.section
+		cell.clCollectionView.reloadData()
 		return cell
 	}
 
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		if let menu = menu {
-			if section == 0 {
+			if collectionView.tag == 0 {
 				return menu.availableFood.monday.count
-			} else if section == 1 {
+			} else if collectionView.tag == 1 {
 				return menu.availableFood.tuesday.count
-			} else if section == 2 {
+			} else if collectionView.tag == 2 {
 				return menu.availableFood.wednesday.count
-			} else if section == 3 {
+			} else if collectionView.tag == 3 {
 				return menu.availableFood.thursday.count
-			} else if section == 4 {
+			} else if collectionView.tag == 4 {
 				return menu.availableFood.friday.count
 			}
 		}
-		return 30
+		return 0
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCollectionViewCell", for: indexPath) as! MenuCollectionViewCell
 		cell.layer.cornerRadius = 8
+
+		if let menu = menu {
+			if collectionView.tag == 0 {
+				let foodName = menu.availableFood.monday[indexPath.item]
+				cell.foodNameLabel.text = foodName.name
+			}
+		}
+
 		return cell
+	}
+
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		<#code#>
 	}
 
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -149,6 +163,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 				do {
 					self.menu = try decoder.decode(Menu.self, from: data)
+					self.tableView.reloadData()
 
 				} catch let jsonErr {
 					print("Failed to decode: ", jsonErr)

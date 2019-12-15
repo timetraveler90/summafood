@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -385,12 +385,11 @@
                                                                         </constraints>
                                                                     </collectionViewCellContentView>
                                                                     <size key="customSize" width="164" height="164"/>
+                                                                    <connections>
+                                                                        <outlet property="foodNameLabel" destination="9U3-ek-JkO" id="wsd-d8-cbN"/>
+                                                                    </connections>
                                                                 </collectionViewCell>
                                                             </cells>
-                                                            <connections>
-                                                                <outlet property="dataSource" destination="r8v-kx-ZWa" id="quv-6L-8sH"/>
-                                                                <outlet property="delegate" destination="r8v-kx-ZWa" id="Os2-zv-qGu"/>
-                                                            </connections>
                                                         </collectionView>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -416,8 +415,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="r8v-kx-ZWa" id="A4p-QT-PeL"/>
-                                    <outlet property="delegate" destination="r8v-kx-ZWa" id="m1l-pB-c35"/>
+                                    <outlet property="dataSource" destination="r8v-kx-ZWa" id="eeU-6u-iZ0"/>
+                                    <outlet property="delegate" destination="r8v-kx-ZWa" id="PyZ-jY-Tvl"/>
                                 </connections>
                             </tableView>
                         </subviews>

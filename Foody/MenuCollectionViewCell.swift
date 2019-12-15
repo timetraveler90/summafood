@@ -10,4 +10,5 @@ import UIKit
 
 class MenuCollectionViewCell: UICollectionViewCell {
     
+	@IBOutlet weak var foodNameLabel: UILabel!
 }
