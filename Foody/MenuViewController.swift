@@ -14,7 +14,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 	let userId = UserDefaults.standard.string(forKey: "userID") ?? ""
 	private var menu: Menu?
 
-
+	var selectedFood = [Int:Int]()
 
 	// MARK: - Menu
 	struct Menu: Codable {
@@ -52,6 +52,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell") as! MenuTableViewCell
 		cell.clCollectionView.dataSource = self
+		cell.clCollectionView.delegate = self
 		cell.clCollectionView.tag = indexPath.section
 		cell.clCollectionView.reloadData()
 		return cell
@@ -79,23 +80,36 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 		cell.layer.cornerRadius = 8
 
 		if let menu = menu {
-			if collectionView.tag == 0 {
-				let foodName = menu.availableFood.monday[indexPath.item]
-				cell.foodNameLabel.text = foodName.name
-			} else if collectionView.tag == 1 {
-				let foodName = menu.availableFood.tuesday[indexPath.item]
-				cell.foodNameLabel.text = foodName.name
-			} else if collectionView.tag == 2 {
-				let foodName = menu.availableFood.wednesday[indexPath.item]
-				cell.foodNameLabel.text = foodName.name
-			} else if collectionView.tag == 3 {
-				let foodName = menu.availableFood.thursday[indexPath.item]
-				cell.foodNameLabel.text = foodName.name
-			} else if collectionView.tag == 4 {
-				let foodName = menu.availableFood.friday[indexPath.item]
-				cell.foodNameLabel.text = foodName.name
+			let allDays = [menu.availableFood.monday, menu.availableFood.tuesday, menu.availableFood.wednesday, menu.availableFood.thursday, menu.availableFood.friday]
+			let food = allDays[collectionView.tag][indexPath.item] as FoodName
+			cell.foodNameLabel.text = food.name
+
+			if(selectedFood[collectionView.tag] == food.id) {
+				cell.contentView.layer.borderColor = UIColor.red.cgColor
+				cell.contentView.layer.borderWidth = 5
+			}else{
+				cell.contentView.layer.borderWidth = 0
 			}
+
+//			if collectionView.tag == 0 {
+//				let foodName = menu.availableFood.monday[indexPath.item]
+//				cell.foodNameLabel.text = foodName.name
+//			} else if collectionView.tag == 1 {
+//				let foodName = menu.availableFood.tuesday[indexPath.item]
+//				cell.foodNameLabel.text = foodName.name
+//			} else if collectionView.tag == 2 {
+//				let foodName = menu.availableFood.wednesday[indexPath.item]
+//				cell.foodNameLabel.text = foodName.name
+//			} else if collectionView.tag == 3 {
+//				let foodName = menu.availableFood.thursday[indexPath.item]
+//				cell.foodNameLabel.text = foodName.name
+//			} else if collectionView.tag == 4 {
+//				let foodName = menu.availableFood.friday[indexPath.item]
+//				cell.foodNameLabel.text = foodName.name
+//			}
 		}
+
+
 
 		return cell
 	}
@@ -106,6 +120,44 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 			return allDays.count
 		}
 		return 0
+	}
+
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		if let menu = menu {
+			let allDays = [menu.availableFood.monday, menu.availableFood.tuesday, menu.availableFood.wednesday, menu.availableFood.thursday, menu.availableFood.friday]
+			let selected = allDays[collectionView.tag][indexPath.item] as FoodName
+			print("IZABRANA: \(selected.name)")
+
+			if(selectedFood[collectionView.tag] == selected.id) {
+				selectedFood[collectionView.tag] = nil
+			}else{
+				selectedFood[collectionView.tag] = selected.id
+			}
+
+			collectionView.reloadData()
+		}
+
+
+//		if let menu = menu {
+
+//			if collectionView.tag == 0 {
+//				selectedFood = menu.availableFood.monday[indexPath.item]
+//				cell.foodNameLabel.text = foodName.name
+//			} else if collectionView.tag == 1 {
+//				let foodName = menu.availableFood.tuesday[indexPath.item]
+//				cell.foodNameLabel.text = foodName.name
+//			} else if collectionView.tag == 2 {
+//				let foodName = menu.availableFood.wednesday[indexPath.item]
+//				cell.foodNameLabel.text = foodName.name
+//			} else if collectionView.tag == 3 {
+//				let foodName = menu.availableFood.thursday[indexPath.item]
+//				cell.foodNameLabel.text = foodName.name
+//			} else if collectionView.tag == 4 {
+//				let foodName = menu.availableFood.friday[indexPath.item]
+//				cell.foodNameLabel.text = foodName.name
+//			}
+//		}
+
 	}
 
 
@@ -152,6 +204,37 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 		let alert = UIAlertController(title: "Submited", message: "Submiting the form", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
 		self.present(alert, animated: true, completion: nil)
+
+		let userID = UserDefaults.standard.integer(forKey: "userID")
+		let requestData = [
+			"user_id":userID,
+			"offered_meal":[
+				"monday":selectedFood[0] ?? -1,
+				"tuesday":selectedFood[1] ?? -1,
+				"wednesday":selectedFood[2] ?? -1,
+				"thursday":selectedFood[3] ?? -1,
+				"friday":selectedFood[4] ?? -1
+			]
+		] as [String : Any]
+
+		print("BODY: \(requestData)")
+
+		let jsonData = try? JSONSerialization.data(withJSONObject: requestData, options: [])
+
+//		let encoder = JSONEncoder()
+//		encoder.outputFormatting = .prettyPrinted
+//		let jsonData = encoder.encode(requestData)
+
+		var request = URLRequest(url: URL(string: "http://uc-dev.voiceworks.com:4000/external/user_orders")!)
+		request.httpMethod = "POST"
+		request.httpBody = jsonData
+
+		print("SALJEM REQUEST: \(request)")
+
+
+		URLSession.shared.dataTask(with: request) { (data, response, error) in
+			print("GOTOVO \(data)  \(response),   \(error)")
+		}.resume()
 	}
 
 
