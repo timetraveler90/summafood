@@ -91,23 +91,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 			}else{
 				cell.contentView.layer.borderWidth = 0
 			}
-
-//			if collectionView.tag == 0 {
-//				let foodName = menu.availableFood.monday[indexPath.item]
-//				cell.foodNameLabel.text = foodName.name
-//			} else if collectionView.tag == 1 {
-//				let foodName = menu.availableFood.tuesday[indexPath.item]
-//				cell.foodNameLabel.text = foodName.name
-//			} else if collectionView.tag == 2 {
-//				let foodName = menu.availableFood.wednesday[indexPath.item]
-//				cell.foodNameLabel.text = foodName.name
-//			} else if collectionView.tag == 3 {
-//				let foodName = menu.availableFood.thursday[indexPath.item]
-//				cell.foodNameLabel.text = foodName.name
-//			} else if collectionView.tag == 4 {
-//				let foodName = menu.availableFood.friday[indexPath.item]
-//				cell.foodNameLabel.text = foodName.name
-//			}
 		}
 
 
@@ -127,7 +110,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 		if let menu = menu {
 			let allDays = [menu.availableFood.monday, menu.availableFood.tuesday, menu.availableFood.wednesday, menu.availableFood.thursday, menu.availableFood.friday]
 			let selected = allDays[collectionView.tag][indexPath.item] as FoodName
-			print("IZABRANA: \(selected.name)")
 
 			if(selectedFood[collectionView.tag] == selected.id) {
 				selectedFood[collectionView.tag] = nil
@@ -137,28 +119,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 			collectionView.reloadData()
 		}
-
-
-//		if let menu = menu {
-
-//			if collectionView.tag == 0 {
-//				selectedFood = menu.availableFood.monday[indexPath.item]
-//				cell.foodNameLabel.text = foodName.name
-//			} else if collectionView.tag == 1 {
-//				let foodName = menu.availableFood.tuesday[indexPath.item]
-//				cell.foodNameLabel.text = foodName.name
-//			} else if collectionView.tag == 2 {
-//				let foodName = menu.availableFood.wednesday[indexPath.item]
-//				cell.foodNameLabel.text = foodName.name
-//			} else if collectionView.tag == 3 {
-//				let foodName = menu.availableFood.thursday[indexPath.item]
-//				cell.foodNameLabel.text = foodName.name
-//			} else if collectionView.tag == 4 {
-//				let foodName = menu.availableFood.friday[indexPath.item]
-//				cell.foodNameLabel.text = foodName.name
-//			}
-//		}
-
 	}
 
 
@@ -202,9 +162,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 	}
 
 	@objc func orderTheFood() {
-		let alert = UIAlertController(title: "Submited", message: "Submiting the form", preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-		self.present(alert, animated: true, completion: nil)
+//		let alert = UIAlertController(title: "Submited", message: "Submiting the form", preferredStyle: .alert)
+//		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+//		self.present(alert, animated: true, completion: nil)
 
 		let userID = UserDefaults.standard.integer(forKey: "userID")
 		let url = "http://uc-dev.voiceworks.com:4000/external/user_orders"
