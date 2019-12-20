@@ -162,10 +162,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 	}
 
 	@objc func orderTheFood() {
-//		let alert = UIAlertController(title: "Submited", message: "Submiting the form", preferredStyle: .alert)
-//		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-//		self.present(alert, animated: true, completion: nil)
-
 		let userID = UserDefaults.standard.integer(forKey: "userID")
 		let url = "http://uc-dev.voiceworks.com:4000/external/user_orders"
 
@@ -188,9 +184,18 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 				switch response.result {
 				case.failure(let error):
+					print("Status code is: \(String(describing: response.response?.statusCode))")
 					print("Failed due to the: \(error)")
+
+							let alert = UIAlertController(title: "Fail", message: "Submiting the form failed", preferredStyle: .alert)
+							alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
+							self.present(alert, animated: true, completion: nil)
 				case .success(let value):
 					print("Succeded, the value is \(value)")
+
+							let alert = UIAlertController(title: "Success", message: "The form is successfully submited.", preferredStyle: .alert)
+							alert.addAction(UIAlertAction(title: "Done!", style: .default, handler: nil))
+							self.present(alert, animated: true, completion: nil)
 				}
 		}
 	}
