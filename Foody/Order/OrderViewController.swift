@@ -32,7 +32,6 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
 	override func viewDidLoad() {
         super.viewDidLoad()
 		tableView.tableFooterView = UIView(frame: .zero)
-		fetchJSON()
 
 		// date formating and displaying in the title
 		let dateFormat = DateFormatter()
@@ -43,6 +42,12 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		title = "Ordered food for the week: \(nextWeekFormated)"
 
     }
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		fetchJSON()
+		tableView.reloadData()
+	}
 
 	fileprivate func fetchJSON() {
 		let urlString = "http://uc-dev.voiceworks.com:4000/external/ordered_food/\(userId)"

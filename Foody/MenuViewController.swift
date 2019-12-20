@@ -111,9 +111,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 			let allDays = [menu.availableFood.monday, menu.availableFood.tuesday, menu.availableFood.wednesday, menu.availableFood.thursday, menu.availableFood.friday]
 			let selected = allDays[collectionView.tag][indexPath.item] as FoodName
 
-			if(selectedFood[collectionView.tag] == selected.id) {
+			if (selectedFood[collectionView.tag] == selected.id) {
 				selectedFood[collectionView.tag] = nil
-			}else{
+			} else {
 				selectedFood[collectionView.tag] = selected.id
 			}
 
@@ -165,38 +165,45 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 		let userID = UserDefaults.standard.integer(forKey: "userID")
 		let url = "http://uc-dev.voiceworks.com:4000/external/user_orders"
 
+		guard let mondayFood = selectedFood[0] else { return }
+		let mondayFoodString = String(mondayFood)
+
+		guard let tuesdayFood = selectedFood[1] else { return }
+		let tuesdayFoodString = String(tuesdayFood)
+
+		guard let wednesdayFood = selectedFood[2] else { return }
+		let wednesdayFoodString = String(wednesdayFood)
+
+		guard let thursdayFood = selectedFood[3] else { return }
+		let thursdayFoodString = String(thursdayFood)
+
+		guard let fridayFood = selectedFood[4] else { return }
+		let fridayFoodString = String(fridayFood)
+
+		let foodDict = [
+			"monday":mondayFoodString,
+			"tuesday":tuesdayFoodString,
+			"wednesday":wednesdayFoodString,
+			"thursday":thursdayFoodString,
+			"friday":fridayFoodString
+		]
+
 		let parameters = [
 			"user_id":userID,
-			"offered_meal":[
-				"monday":selectedFood[0] ?? 1,
-				"tuesday":selectedFood[1] ?? 1,
-				"wednesday":selectedFood[2] ?? 1,
-				"thursday":selectedFood[3] ?? 1,
-				"friday":selectedFood[4] ?? 1]
-			] as [String : Any]
+			"offered_meal":foodDict
+		] as [String : Any]
 
 		let header = ["Content-Type": "application/json",
-					  "Accept": "application/json"]
+					  "Accept": "application/json"
+		]
 
 		Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
 			.validate(statusCode: 200..<600)
 			.responseJSON { response in
 
-				switch response.result {
-				case.failure(let error):
-					print("Status code is: \(String(describing: response.response?.statusCode))")
-					print("Failed due to the: \(error)")
-
-							let alert = UIAlertController(title: "Fail", message: "Submiting the form failed", preferredStyle: .alert)
-							alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
-							self.present(alert, animated: true, completion: nil)
-				case .success(let value):
-					print("Succeded, the value is \(value)")
-
-							let alert = UIAlertController(title: "Success", message: "The form is successfully submited.", preferredStyle: .alert)
-							alert.addAction(UIAlertAction(title: "Done!", style: .default, handler: nil))
-							self.present(alert, animated: true, completion: nil)
-				}
+				let alert = UIAlertController(title: "Success", message: "The form is successfully submited.", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "Done!", style: .default, handler: nil))
+				self.present(alert, animated: true, completion: nil)
 		}
 	}
 
