@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -206,35 +207,32 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 		self.present(alert, animated: true, completion: nil)
 
 		let userID = UserDefaults.standard.integer(forKey: "userID")
-		let requestData = [
+		let url = "http://uc-dev.voiceworks.com:4000/external/user_orders"
+
+		let parameters = [
 			"user_id":userID,
 			"offered_meal":[
-				"monday":selectedFood[0] ?? -1,
-				"tuesday":selectedFood[1] ?? -1,
-				"wednesday":selectedFood[2] ?? -1,
-				"thursday":selectedFood[3] ?? -1,
-				"friday":selectedFood[4] ?? -1
-			]
-		] as [String : Any]
+				"monday":selectedFood[0] ?? 1,
+				"tuesday":selectedFood[1] ?? 1,
+				"wednesday":selectedFood[2] ?? 1,
+				"thursday":selectedFood[3] ?? 1,
+				"friday":selectedFood[4] ?? 1]
+			] as [String : Any]
 
-		print("BODY: \(requestData)")
+		let header = ["Content-Type": "application/json",
+					  "Accept": "application/json"]
 
-		let jsonData = try? JSONSerialization.data(withJSONObject: requestData, options: [])
+		Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+			.validate(statusCode: 200..<600)
+			.responseJSON { response in
 
-//		let encoder = JSONEncoder()
-//		encoder.outputFormatting = .prettyPrinted
-//		let jsonData = encoder.encode(requestData)
-
-		var request = URLRequest(url: URL(string: "http://uc-dev.voiceworks.com:4000/external/user_orders")!)
-		request.httpMethod = "POST"
-		request.httpBody = jsonData
-
-		print("SALJEM REQUEST: \(request)")
-
-
-		URLSession.shared.dataTask(with: request) { (data, response, error) in
-			print("GOTOVO \(data)  \(response),   \(error)")
-		}.resume()
+				switch response.result {
+				case.failure(let error):
+					print("Failed due to the: \(error)")
+				case .success(let value):
+					print("Succeded, the value is \(value)")
+				}
+		}
 	}
 
 
@@ -242,14 +240,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 		let urlString = "http://uc-dev.voiceworks.com:4000/external/available_food/\(userId)"
 		guard let url = URL(string: urlString) else { return }
 
-		URLSession.shared.dataTask(with: url) { (data, _, err) in
+//		URLSession.shared.dataTask(with: url) { (data, _, err) in
+		Alamofire.request(url, method: .get).responseJSON { response in
 			DispatchQueue.main.async {
-				if let err = err {
-					print("Failed to get data from URL: ", err)
-					return
-				}
+//				if let err = err {
+//					print("Failed to get data from URL: ", err)
+//					return
+//				}
 
-				guard let data = data else { return }
+				guard let data = response.data else { return }
 				let decoder = JSONDecoder()
 
 				do {
@@ -261,7 +260,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 				}
 
 			}
-		}.resume()
+		}
 	}
 
 
