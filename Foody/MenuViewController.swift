@@ -240,25 +240,25 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 		let urlString = "http://uc-dev.voiceworks.com:4000/external/available_food/\(userId)"
 		guard let url = URL(string: urlString) else { return }
 
-//		URLSession.shared.dataTask(with: url) { (data, _, err) in
 		Alamofire.request(url, method: .get).responseJSON { response in
-			DispatchQueue.main.async {
-//				if let err = err {
-//					print("Failed to get data from URL: ", err)
-//					return
-//				}
+			switch response.result {
+			case .success:
+				DispatchQueue.main.async {
 
-				guard let data = response.data else { return }
-				let decoder = JSONDecoder()
+					guard let data = response.data else { return }
+					let decoder = JSONDecoder()
 
-				do {
-					self.menu = try decoder.decode(Menu.self, from: data)
-					self.tableView.reloadData()
+					do {
+						self.menu = try decoder.decode(Menu.self, from: data)
+						self.tableView.reloadData()
 
-				} catch let jsonErr {
-					print("Failed to decode: ", jsonErr)
+					} catch let jsonErr {
+						print("Failed to decode: ", jsonErr)
+					}
+
 				}
-
+			case .failure(let error):
+				print("Failed to get data from URL: \(error)")
 			}
 		}
 	}
