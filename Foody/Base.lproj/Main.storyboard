@@ -139,20 +139,40 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2AL-GH-hno">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2AL-GH-hno">
                                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The longest name in the history" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IyX-5e-GA5">
+                                                                                <rect key="frame" x="8" y="8" width="84" height="84"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="84" id="EsF-Dr-eZ3"/>
+                                                                                    <constraint firstAttribute="width" constant="84" id="dcL-Q3-Wxh"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
                                                                         <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="bottom" secondItem="IyX-5e-GA5" secondAttribute="bottom" constant="8" id="1mY-MS-3RF"/>
+                                                                            <constraint firstItem="IyX-5e-GA5" firstAttribute="top" secondItem="2AL-GH-hno" secondAttribute="top" constant="8" id="C0m-B7-Gg2"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="IyX-5e-GA5" secondAttribute="trailing" constant="8" id="ivH-Zv-ey7"/>
+                                                                            <constraint firstItem="IyX-5e-GA5" firstAttribute="leading" secondItem="2AL-GH-hno" secondAttribute="leading" constant="8" id="kOz-jU-wmh"/>
+                                                                        </constraints>
                                                                     </view>
                                                                 </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="2AL-GH-hno" firstAttribute="centerX" secondItem="eqU-Bh-Ooc" secondAttribute="centerX" id="HRr-Cd-Nlx"/>
+                                                                    <constraint firstItem="2AL-GH-hno" firstAttribute="centerY" secondItem="eqU-Bh-Ooc" secondAttribute="centerY" id="xkj-tf-61D"/>
+                                                                </constraints>
                                                             </collectionViewCellContentView>
                                                             <size key="customSize" width="100" height="100"/>
+                                                            <connections>
+                                                                <outlet property="settingFoodNameLabel" destination="IyX-5e-GA5" id="0b7-Ke-xGF"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="hXy-87-Cwr" id="jmo-el-1IC"/>
-                                                        <outlet property="delegate" destination="hXy-87-Cwr" id="rGw-Go-wZd"/>
-                                                    </connections>
                                                 </collectionView>
                                             </subviews>
                                             <constraints>

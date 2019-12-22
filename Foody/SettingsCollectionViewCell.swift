@@ -10,4 +10,8 @@ import UIKit
 
 class SettingsCollectionViewCell: UICollectionViewCell {
     
+	@IBOutlet weak var settingFoodNameLabel: UILabel!
+
+
+
 }

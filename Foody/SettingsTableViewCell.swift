@@ -24,11 +24,11 @@ class SettingsTableViewCell: UITableViewCell {
 
 }
 
-extension SettingsTableViewCell {
-	func setCollectionViewDataSourceDelegate<D: UICollectionViewDelegate & UICollectionViewDataSource> (_ dataSourceDelegate: D, forRow row: Int) {
-		sCollectionView.delegate = dataSourceDelegate
-		sCollectionView.dataSource = dataSourceDelegate
-		
-		sCollectionView.reloadData()
-	}
-}
+//extension SettingsTableViewCell {
+//	func setCollectionViewDataSourceDelegate<D: UICollectionViewDelegate & UICollectionViewDataSource> (_ dataSourceDelegate: D, forRow row: Int) {
+//		sCollectionView.delegate = dataSourceDelegate
+//		sCollectionView.dataSource = dataSourceDelegate
+//
+//		sCollectionView.reloadData()
+//	}
+//}

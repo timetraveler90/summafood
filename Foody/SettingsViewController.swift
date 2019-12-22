@@ -11,6 +11,7 @@ import KeychainSwift
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
 
+
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var logoutButton: UIButton!
 	let keychainUsername = "username"
@@ -43,6 +44,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell") as! SettingsTableViewCell
+		cell.sCollectionView.delegate = self
+		cell.sCollectionView.dataSource = self
 		return cell
 	}
 
@@ -52,6 +55,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SettingsCollectionViewCell", for: indexPath) as! SettingsCollectionViewCell
+
+		cell.settingFoodNameLabel.text = "ParalelopitetParalelopitetParalelopitetParalelopitet"
 		return cell
 	}
 
