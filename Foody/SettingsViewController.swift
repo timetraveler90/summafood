@@ -9,66 +9,92 @@
 import UIKit
 import KeychainSwift
 
-class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
+class SettingsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var logoutButton: UIButton!
+    let keychainUsername = "username"
+    let keychainPassword = "password"
+
+    lazy var foodList: [FoodName] = {
+        if let menu = model.menu {
+            let allDays: [FoodName] = [menu.availableFood.monday,
+                                       menu.availableFood.tuesday,
+                                       menu.availableFood.wednesday,
+                                       menu.availableFood.thursday,
+                                       menu.availableFood.friday].flatMap {
+                $0
+            }
+
+            let uniqueFoodSet = Set(allDays)
+            let uniqueFoodSorted = Array(uniqueFoodSet).sorted { (f1: FoodName, f2: FoodName) in
+                f1.id < f2.id
+            }
+            return uniqueFoodSorted
+        }
+        return []
+    }()
 
 
-	@IBOutlet weak var tableView: UITableView!
-	@IBOutlet weak var logoutButton: UIButton!
-	let keychainUsername = "username"
-	let keychainPassword = "password"
-
-	@IBAction func logoutButtonPressed(_ sender: Any) {
-		// removing of userId after logout
-		UserDefaults.standard.setValue(nil, forKey: "userID")
-
-		let keychain = KeychainSwift()
-		keychain.delete(keychainUsername)
-		keychain.delete(keychainPassword)
-		keychain.clear()
-
-		let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-		let loginVC = mainStoryBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-		let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
-		appDel.window?.rootViewController = loginVC 
-
-	}
-
-	override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-		tableView.tableFooterView = UIView(frame: .zero)
+        self.title = "Select favorite food"
     }
 
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 1
-	}
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        foodList.count
+    }
 
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell") as! SettingsTableViewCell
-		cell.sCollectionView.delegate = self
-		cell.sCollectionView.dataSource = self
-		return cell
-	}
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SettingsCollectionViewCell", for: indexPath) as! SettingsCollectionViewCell
+        let label = cell.viewWithTag(10) as! UILabel
+        let food = foodList[indexPath.item]
+        label.text = "\(food.id): \(food.name)"
 
-	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 10
-	}
+        if (model.favoriteFood.contains(food)) {
+            cell.contentView.layer.borderWidth = 2
+            cell.contentView.layer.borderColor = UIColor.red.cgColor
+        } else {
+            cell.contentView.layer.borderWidth = 0
+        }
 
-	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SettingsCollectionViewCell", for: indexPath) as! SettingsCollectionViewCell
+        return cell
+    }
 
-		cell.settingFoodNameLabel.text = "ParalelopitetParalelopitetParalelopitetParalelopitet"
-		return cell
-	}
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedFood = foodList[indexPath.item]
 
-	func numberOfSections(in tableView: UITableView) -> Int {
-		return 1
-	}
+        if (model.favoriteFood.contains(selectedFood)) {
+            model.favoriteFood.remove(selectedFood)
+        } else {
+            model.favoriteFood.insert(selectedFood)
+        }
 
-	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return "Select favorite food"
-	}
+        let cell = collectionView.cellForItem(at: indexPath) as! SettingsCollectionViewCell
+        if (model.favoriteFood.contains(selectedFood)) {
+            cell.contentView.layer.borderWidth = 2
+            cell.contentView.layer.borderColor = UIColor.red.cgColor
+        } else {
+            cell.contentView.layer.borderWidth = 0
+        }
+    }
 
+    // MARK: Actions
 
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+        // removing of userId after logout
+        UserDefaults.standard.setValue(nil, forKey: "userID")
 
+        let keychain = KeychainSwift()
+        keychain.delete(keychainUsername)
+        keychain.delete(keychainPassword)
+        keychain.clear()
+
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = mainStoryBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        let appDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDel.window?.rootViewController = loginVC
+
+    }
 
 }

@@ -10,10 +10,13 @@ import UIKit
 import Alamofire
 import KeychainSwift
 
+var model = (UIApplication.shared.delegate as! AppDelegate).mainModel
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
+	var mainModel = Model()
 	let url = "http://uc-dev.voiceworks.com:4000/external/signin"
 	private let keychain = KeychainSwift()
 	let keychainUsername = "username"
