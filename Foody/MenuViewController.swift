@@ -147,6 +147,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
         }
 		self.tabBarItem.image = UIImage(named: "menu")
+
+		// date formating and displaying in the title
+		let dateFormat = DateFormatter()
+		dateFormat.dateFormat = "dd-MM-yy"
+		let nextWeek = Date.today().next(.monday)
+		let nextWeekFormated = dateFormat.string(from: nextWeek)
+
+		self.title = "Orders for: \(nextWeekFormated)"
+		self.navigationController?.title = "Menu"
     }
 
     override func viewWillAppear(_ animated: Bool) {
