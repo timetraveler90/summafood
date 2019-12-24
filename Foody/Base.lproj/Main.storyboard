@@ -157,6 +157,9 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="120" height="120"/>
+                                        <connections>
+                                            <outlet property="view" destination="haK-L0-C41" id="yez-X0-93z"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

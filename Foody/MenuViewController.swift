@@ -61,11 +61,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                     return true
                 } else if (model.favoriteFood.contains(f2)) {
                     return false
-                }
+				}
                 return f1.id < f2.id
             }
 
-            let food = sortedFood[indexPath.item] as FoodName
+
+			let food = sortedFood[indexPath.item] as FoodName
+			print("\(food)")
             cell.foodNameLabel.text = food.name
 
             if (selectedFood[collectionView.tag] == food.id) {
@@ -79,6 +81,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
 
+
+
     func numberOfSections(in tableView: UITableView) -> Int {
         if let menu = model.menu {
             let allDays = [menu.availableFood.monday, menu.availableFood.tuesday, menu.availableFood.wednesday, menu.availableFood.thursday, menu.availableFood.friday]
@@ -91,6 +95,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let menu = model.menu {
             let allDays = [menu.availableFood.monday, menu.availableFood.tuesday, menu.availableFood.wednesday, menu.availableFood.thursday, menu.availableFood.friday]
             let selected = allDays[collectionView.tag][indexPath.item] as FoodName
+
+			print(selected.id)
+			print(selected.name)
+			print(indexPath)
 
             if (selectedFood[collectionView.tag] == selected.id) {
                 selectedFood[collectionView.tag] = nil
@@ -142,7 +150,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+		tableView.reloadData()
     }
 
     fileprivate func submit() {
