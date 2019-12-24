@@ -22,15 +22,13 @@ class SettingsViewController: UIViewController, UICollectionViewDataSource, UICo
                                        menu.availableFood.tuesday,
                                        menu.availableFood.wednesday,
                                        menu.availableFood.thursday,
-                                       menu.availableFood.friday].flatMap {
-                $0
-            }
+                                       menu.availableFood.friday].flatMap { $0 }
 
-            let uniqueFoodSet = Set(allDays)
+			let uniqueFoodSet = Set(allDays)
             let uniqueFoodSorted = Array(uniqueFoodSet).sorted { (f1: FoodName, f2: FoodName) in
                 f1.id < f2.id
             }
-            return uniqueFoodSorted
+			return uniqueFoodSorted
         }
         return []
     }()
@@ -38,7 +36,8 @@ class SettingsViewController: UIViewController, UICollectionViewDataSource, UICo
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Select favorite food"
+//        self.title = "Select favorite food"
+		self.navigationController?.title = "Favorite food"
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -49,7 +48,7 @@ class SettingsViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SettingsCollectionViewCell", for: indexPath) as! SettingsCollectionViewCell
         let label = cell.viewWithTag(10) as! UILabel
         let food = foodList[indexPath.item]
-        label.text = "\(food.id): \(food.name)"
+        label.text = "\(food.name)"
 
         if (model.favoriteFood.contains(food)) {
             cell.contentView.layer.borderWidth = 2

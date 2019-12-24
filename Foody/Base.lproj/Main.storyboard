@@ -189,7 +189,7 @@
             </objects>
             <point key="canvasLocation" x="1295.6521739130435" y="564.50892857142856"/>
         </scene>
-        <!--Ordered food for week of:-->
+        <!--Order View Controller-->
         <scene sceneID="0Vg-fy-f8J">
             <objects>
                 <viewController storyboardIdentifier="OrderVC" id="75V-7B-ufA" customClass="OrderViewController" customModule="Foody" customModuleProvider="target" sceneMemberID="viewController">
@@ -234,7 +234,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BZc-bu-zuj"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Ordered food for week of:" id="Ke8-hW-Qkg"/>
+                    <navigationItem key="navigationItem" id="Ke8-hW-Qkg"/>
                     <connections>
                         <outlet property="tableView" destination="AIm-BF-eWs" id="pQQ-PV-U0E"/>
                         <segue destination="mHV-4Z-Lvv" kind="show" identifier="foodDetailsSegue" id="cbg-n0-bvi"/>
@@ -428,7 +428,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="tabBar" modalPresentationStyle="fullScreen" id="cKh-mb-VOe" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="bry-qP-cn4"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2a7-8f-aYh">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="centered" id="2a7-8f-aYh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -443,11 +443,11 @@
             </objects>
             <point key="canvasLocation" x="223" y="-598"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Menu-->
         <scene sceneID="Ydj-YE-apm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jq1-28-dg5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="mostRecent" id="njL-pn-PMO"/>
+                    <tabBarItem key="tabBarItem" title="Menu" image="menu" selectedImage="menu" id="njL-pn-PMO"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="TDP-58-LfH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dRf-V6-kOo">
@@ -463,11 +463,11 @@
             </objects>
             <point key="canvasLocation" x="1630" y="-599"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Orders-->
         <scene sceneID="oPv-iz-qRg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5KF-ng-7DS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="SRH-nK-Eck"/>
+                    <tabBarItem key="tabBarItem" title="Orders" image="ordered" selectedImage="ordered" id="SRH-nK-Eck"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ty6-q5-6Tw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -482,11 +482,11 @@
             </objects>
             <point key="canvasLocation" x="2545" y="116"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Favorite food-->
         <scene sceneID="1as-uF-s3r">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6ni-hv-AsF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="yCq-0x-u05"/>
+                    <tabBarItem key="tabBarItem" title="Favorite food" image="favorite" selectedImage="favorite" id="yCq-0x-u05"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="qqV-KK-4mv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iO6-xz-1H1">
@@ -504,6 +504,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="favorite" width="24" height="24"/>
         <image name="loginLogo" width="100" height="100"/>
+        <image name="menu" width="24" height="24"/>
+        <image name="ordered" width="24" height="24"/>
     </resources>
 </document>

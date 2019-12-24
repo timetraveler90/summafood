@@ -146,6 +146,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         model.fetchData {
             self.tableView.reloadData()
         }
+		self.tabBarItem.image = UIImage(named: "menu")
     }
 
     override func viewWillAppear(_ animated: Bool) {

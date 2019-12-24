@@ -39,7 +39,8 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		let nextWeek = Date.today().next(.monday)
 		let nextWeekFormated = dateFormat.string(from: nextWeek)
 
-		title = "Ordered food for the week: \(nextWeekFormated)"
+		self.title = "Ordered food for the week: \(nextWeekFormated)"
+		self.navigationController?.title = "Orders"
 
     }
 
