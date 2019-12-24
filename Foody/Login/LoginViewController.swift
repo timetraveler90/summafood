@@ -108,9 +108,9 @@ class LoginViewController: UIViewController {
 		loginButton.layer.borderWidth = 1
 		loginButton.layer.cornerRadius = 15
 
-		imageView.layer.borderWidth = 1
-		imageView.layer.borderColor = UIColor.blue.cgColor
-		imageView.layer.cornerRadius = 15
+//		imageView.layer.borderWidth = 1
+//		imageView.layer.borderColor = UIColor.blue.cgColor
+//		imageView.layer.cornerRadius = 15
 
 	}
 
