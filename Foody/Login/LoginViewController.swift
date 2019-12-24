@@ -85,6 +85,11 @@ class LoginViewController: UIViewController {
 
 	func prepareUI() {
 
+		let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+		backgroundImage.image = UIImage(named: "background")
+		backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
+		self.view.insertSubview(backgroundImage, at: 0)
+
 		usernameTextField.delegate = self
 		usernameTextField.textContentType = .username
 		usernameTextField.keyboardType = .emailAddress
@@ -107,10 +112,6 @@ class LoginViewController: UIViewController {
 		loginButton.layer.borderColor = UIColor.blue.cgColor
 		loginButton.layer.borderWidth = 1
 		loginButton.layer.cornerRadius = 15
-
-//		imageView.layer.borderWidth = 1
-//		imageView.layer.borderColor = UIColor.blue.cgColor
-//		imageView.layer.cornerRadius = 15
 
 	}
 
