@@ -63,10 +63,10 @@ class LoginViewController: UIViewController {
 		sender.isSelected = !sender.isSelected
 		if sender.isSelected {
 			self.passwordTextField?.isSecureTextEntry = false
-			showPasswordButton.setTitle("Hide", for: .normal)
+			showPasswordButton.setImage(#imageLiteral(resourceName: "crossed eye"), for: .normal)
 		} else {
 			self.passwordTextField?.isSecureTextEntry = true
-			showPasswordButton.setTitle("Show", for: .normal)
+			showPasswordButton.setImage(#imageLiteral(resourceName: "eye"), for: .normal)
 		}
 	}
 
@@ -99,6 +99,7 @@ class LoginViewController: UIViewController {
 		usernameTextField.layer.borderColor = UIColor.blue.cgColor
 		usernameTextField.layer.borderWidth = 1
 		usernameTextField.clipsToBounds = true
+		usernameTextField.backgroundColor = .clear
 
 		passwordTextField.delegate = self
 		passwordTextField.textContentType = .password
@@ -108,6 +109,7 @@ class LoginViewController: UIViewController {
 		passwordTextField.layer.borderWidth = 1
 		passwordTextField.borderStyle = .roundedRect
 		passwordTextField.keyboardAppearance = .dark
+		passwordTextField.backgroundColor = .clear
 
 		loginButton.layer.borderColor = UIColor.blue.cgColor
 		loginButton.layer.borderWidth = 1

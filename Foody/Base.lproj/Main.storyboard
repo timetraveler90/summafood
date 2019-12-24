@@ -49,12 +49,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7A-X9-UAP">
-                                <rect key="frame" x="297" y="553" width="97" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7A-X9-UAP">
+                                <rect key="frame" x="352" y="557" width="35" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="rww-UF-ccg"/>
+                                    <constraint firstAttribute="height" constant="22" id="RSc-Kg-jha"/>
+                                    <constraint firstAttribute="width" constant="35" id="rP5-0c-6J6"/>
                                 </constraints>
-                                <state key="normal" title="Show"/>
+                                <state key="normal" image="eye"/>
                                 <connections>
                                     <action selector="showPasswordPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U2U-Pz-nM1"/>
                                 </connections>
@@ -65,18 +66,16 @@
                             <constraint firstItem="r6M-An-mJu" firstAttribute="top" secondItem="cuh-UQ-ZDq" secondAttribute="bottom" constant="30.5" id="1Ju-n1-tIQ"/>
                             <constraint firstItem="JF3-HM-8ZS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2mW-w7-WTj"/>
                             <constraint firstItem="rsX-DP-WEd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8pp-A2-Ruh"/>
-                            <constraint firstItem="T7A-X9-UAP" firstAttribute="firstBaseline" secondItem="r6M-An-mJu" secondAttribute="firstBaseline" constant="1" id="ATQ-Kx-HQj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cuh-UQ-ZDq" secondAttribute="trailing" constant="20" id="B0i-DY-1Eu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rsX-DP-WEd" secondAttribute="bottom" constant="80" id="D25-QG-G64"/>
-                            <constraint firstItem="T7A-X9-UAP" firstAttribute="centerY" secondItem="r6M-An-mJu" secondAttribute="centerY" id="H5a-di-r5L"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="r6M-An-mJu" secondAttribute="trailing" constant="20" id="Hd3-du-HvW"/>
                             <constraint firstItem="r6M-An-mJu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="U46-0s-uAz"/>
+                            <constraint firstItem="T7A-X9-UAP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="352" id="Vx7-sI-1wl"/>
+                            <constraint firstItem="T7A-X9-UAP" firstAttribute="centerY" secondItem="r6M-An-mJu" secondAttribute="centerY" id="X6s-RA-tUU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rsX-DP-WEd" secondAttribute="trailing" constant="143" id="Ybe-rq-HhR"/>
                             <constraint firstItem="cuh-UQ-ZDq" firstAttribute="top" secondItem="JF3-HM-8ZS" secondAttribute="bottom" constant="65" id="csG-tV-mkW"/>
-                            <constraint firstItem="T7A-X9-UAP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="297" id="jAo-r0-VlO"/>
                             <constraint firstItem="rsX-DP-WEd" firstAttribute="firstBaseline" relation="lessThanOrEqual" secondItem="r6M-An-mJu" secondAttribute="baseline" constant="200" id="jEK-hx-0xo"/>
                             <constraint firstItem="JF3-HM-8ZS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kQr-8S-XK3"/>
-                            <constraint firstItem="T7A-X9-UAP" firstAttribute="trailing" secondItem="r6M-An-mJu" secondAttribute="trailing" id="mBG-87-hhQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JF3-HM-8ZS" secondAttribute="trailing" constant="20" id="nfi-Ug-MD6"/>
                             <constraint firstItem="r6M-An-mJu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="s5E-1h-85f"/>
                             <constraint firstItem="cuh-UQ-ZDq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="sCs-iI-1Sm"/>
@@ -94,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1055" y="-33"/>
+            <point key="canvasLocation" x="-1055.072463768116" y="-33.482142857142854"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="xJ7-RV-xQe">
@@ -504,8 +503,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="eye" width="20" height="20"/>
         <image name="favorite" width="24" height="24"/>
-        <image name="loginLogo" width="100" height="100"/>
+        <image name="loginLogo" width="5000" height="5000"/>
         <image name="menu" width="24" height="24"/>
         <image name="ordered" width="24" height="24"/>
     </resources>
