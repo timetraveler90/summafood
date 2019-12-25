@@ -113,8 +113,9 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tDm-uj-VxC">
                                 <rect key="frame" x="0.0" y="56" width="414" height="590"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zVk-Gj-mRp">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zVk-Gj-mRp">
                                     <size key="itemSize" width="120" height="120"/>
+                                    <size key="estimatedItemSize" width="120" height="120"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -123,7 +124,7 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SettingsCollectionViewCell" id="t8r-Dw-IBD" customClass="SettingsCollectionViewCell" customModule="Foody" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qdd-jR-1Wt">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="F7z-EI-fvc">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -139,19 +140,21 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="1xk-4n-QiM"/>
                                                         <constraint firstAttribute="width" constant="120" id="2FR-4t-8wY"/>
                                                         <constraint firstItem="FTA-mD-NEW" firstAttribute="top" secondItem="haK-L0-C41" secondAttribute="top" id="3Be-zH-tkl"/>
                                                         <constraint firstAttribute="trailing" secondItem="FTA-mD-NEW" secondAttribute="trailing" id="Ddn-Zd-4JS"/>
                                                         <constraint firstAttribute="height" constant="120" id="EyK-dp-xSi"/>
                                                         <constraint firstItem="FTA-mD-NEW" firstAttribute="leading" secondItem="haK-L0-C41" secondAttribute="leading" id="RAs-Db-Lq1"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="dfQ-2k-axB"/>
                                                         <constraint firstAttribute="bottom" secondItem="FTA-mD-NEW" secondAttribute="bottom" id="tWd-EK-R2m"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="haK-L0-C41" secondAttribute="bottom" id="BTG-sz-FKp"/>
-                                                <constraint firstItem="haK-L0-C41" firstAttribute="top" secondItem="qdd-jR-1Wt" secondAttribute="top" id="PYZ-ng-LAz"/>
-                                                <constraint firstItem="haK-L0-C41" firstAttribute="leading" secondItem="qdd-jR-1Wt" secondAttribute="leading" id="iwd-aY-NPV"/>
+                                                <constraint firstItem="haK-L0-C41" firstAttribute="top" secondItem="F7z-EI-fvc" secondAttribute="top" id="PYZ-ng-LAz"/>
+                                                <constraint firstItem="haK-L0-C41" firstAttribute="leading" secondItem="F7z-EI-fvc" secondAttribute="leading" id="iwd-aY-NPV"/>
                                                 <constraint firstAttribute="trailing" secondItem="haK-L0-C41" secondAttribute="trailing" id="v6y-8Q-rDX"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -505,7 +508,7 @@
     <resources>
         <image name="eye" width="20" height="20"/>
         <image name="favorite" width="24" height="24"/>
-        <image name="loginLogo" width="5000" height="5000"/>
+        <image name="loginLogo" width="500" height="500"/>
         <image name="menu" width="24" height="24"/>
         <image name="ordered" width="24" height="24"/>
     </resources>
