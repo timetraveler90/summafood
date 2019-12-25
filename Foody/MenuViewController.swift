@@ -12,7 +12,7 @@ import Alamofire
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    let userId = UserDefaults.standard.string(forKey: "userID") ?? ""
+//    let userId = UserDefaults.standard.string(forKey: "userID") ?? ""
 
 
     var selectedFood = [Int: Int]()
@@ -160,7 +160,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
 	fileprivate func gamble() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Gamble", style: .done, target: self, action: #selector(randomizeTheFoodOrder))
+		navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "gamble"), style: .plain, target: self, action: #selector(randomizeTheFoodOrder))
     }
 
 	@objc func randomizeTheFoodOrder() {
