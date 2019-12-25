@@ -57,6 +57,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             let foodForThisDay = allDays[collectionView.tag] as [FoodName]
             let sortedFood = foodForThisDay.sorted { f1, f2 in
+
+			   if (model.favoriteFood.contains(f1) && model.favoriteFood.contains(f2)) {
+					return f1.id < f2.id
+				}
+				
                 if (model.favoriteFood.contains(f1)) {
                     return true
                 } else if (model.favoriteFood.contains(f2)) {
@@ -93,7 +98,23 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let menu = model.menu {
             let allDays = [menu.availableFood.monday, menu.availableFood.tuesday, menu.availableFood.wednesday, menu.availableFood.thursday, menu.availableFood.friday]
-            let selected = allDays[collectionView.tag][indexPath.item] as FoodName
+
+			let foodForThisDay = allDays[collectionView.tag] as [FoodName]
+            let sortedFood = foodForThisDay.sorted { f1, f2 in
+
+                if (model.favoriteFood.contains(f1) && model.favoriteFood.contains(f2)) {
+                    return f1.id < f2.id
+                }
+
+                if (model.favoriteFood.contains(f1)) {
+                    return true
+                } else if (model.favoriteFood.contains(f2)) {
+                    return false
+                }
+                return f1.id < f2.id
+            }
+
+            let selected = sortedFood[indexPath.item] as FoodName
 
             if (selectedFood[collectionView.tag] == selected.id) {
                 selectedFood[collectionView.tag] = nil
