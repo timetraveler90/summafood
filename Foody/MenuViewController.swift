@@ -166,35 +166,25 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let userID = UserDefaults.standard.integer(forKey: "userID")
         let url = "http://uc-dev.voiceworks.com:4000/external/user_orders"
 
-        guard let mondayFood = selectedFood[0] else {
-            return
-        }
+        guard let mondayFood = selectedFood[0] else { return }
         let mondayFoodString = String(mondayFood)
 
-        guard let tuesdayFood = selectedFood[1] else {
-            return
-        }
+        guard let tuesdayFood = selectedFood[1] else { return }
         let tuesdayFoodString = String(tuesdayFood)
 
-        guard let wednesdayFood = selectedFood[2] else {
-            return
-        }
+        guard let wednesdayFood = selectedFood[2] else {return }
         let wednesdayFoodString = String(wednesdayFood)
 
-        guard let thursdayFood = selectedFood[3] else {
-            return
-        }
+        guard let thursdayFood = selectedFood[3] else { return }
         let thursdayFoodString = String(thursdayFood)
 
-        guard let fridayFood = selectedFood[4] else {
-            return
-        }
+        guard let fridayFood = selectedFood[4] else { return }
         let fridayFoodString = String(fridayFood)
 
         let foodDict = [
 			"monday": mondayFoodString,
             "tuesday": tuesdayFoodString,
-            "wednesday": wednesdayFoodString,
+			"wednesday": wednesdayFoodString,
             "thursday": thursdayFoodString,
             "friday": fridayFoodString
         ]
