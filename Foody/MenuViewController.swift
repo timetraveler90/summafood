@@ -70,8 +70,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.foodNameLabel.text = food.name
 
             if (selectedFood[collectionView.tag] == food.id) {
-                cell.contentView.layer.borderColor = UIColor.red.cgColor
-                cell.contentView.layer.borderWidth = 5
+                cell.contentView.layer.borderColor = #colorLiteral(red: 0.6588235294, green: 0.9294117647, blue: 0.9176470588, alpha: 1)
+                cell.contentView.layer.borderWidth = 4
             } else {
                 cell.contentView.layer.borderWidth = 0
             }
@@ -111,7 +111,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         headerView.backgroundColor = UIColor.clear
         let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width:
         tableView.bounds.size.width, height: 28))
-        headerLabel.textColor = UIColor.black
+        headerLabel.textColor = UIColor.darkGray
 
         if section == 0 {
             headerLabel.text = "Monday"

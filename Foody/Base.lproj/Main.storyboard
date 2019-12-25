@@ -102,7 +102,7 @@
             </objects>
             <point key="canvasLocation" x="-1055.072463768116" y="-33.482142857142854"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Select favorite food-->
         <scene sceneID="xJ7-RV-xQe">
             <objects>
                 <viewController storyboardIdentifier="SettingsVC" id="hXy-87-Cwr" customClass="SettingsViewController" customModule="Foody" customModuleProvider="target" sceneMemberID="viewController">
@@ -197,7 +197,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="65f-gM-gUQ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="NJ7-X3-jEQ"/>
+                    <navigationItem key="navigationItem" title="Select favorite food" id="NJ7-X3-jEQ"/>
                     <connections>
                         <outlet property="collectionView" destination="tDm-uj-VxC" id="4A5-Sq-foc"/>
                         <outlet property="logoutButton" destination="SwZ-MP-quS" id="mlc-Ju-bs1"/>
@@ -371,7 +371,7 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                 </subviews>
-                                                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                <color key="backgroundColor" red="0.99607843137254903" green="0.83921568627450982" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstItem="9U3-ek-JkO" firstAttribute="bottom" secondItem="yAz-f3-U1W" secondAttribute="bottomMargin" id="3Xe-JC-PJi"/>
                                                                                     <constraint firstItem="9U3-ek-JkO" firstAttribute="top" secondItem="yAz-f3-U1W" secondAttribute="topMargin" id="IZX-7U-fQ2"/>

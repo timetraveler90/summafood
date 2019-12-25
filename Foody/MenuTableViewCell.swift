@@ -18,7 +18,7 @@ class MenuTableViewCell: UITableViewCell {
 			containerView.layer.shadowRadius = 2
 			containerView.layer.shadowColor = UIColor(red: 255, green: 165, blue: 0, alpha: 1).cgColor
 			containerView.layer.shadowOffset = CGSize(width: 3, height: 3)
-			containerView.layer.backgroundColor = UIColor(red: 255, green: 0, blue: 0, alpha: 1).cgColor
+			containerView.layer.backgroundColor = #colorLiteral(red: 0.6588235294, green: 0.9294117647, blue: 0.9176470588, alpha: 1)
 			containerView.layer.masksToBounds = true
 		}
 	}

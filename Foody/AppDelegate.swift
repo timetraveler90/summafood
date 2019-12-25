@@ -28,6 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let username = keychain.get(keychainUsername)
 		let password = keychain.get(keychainPassword)
 
+		UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.darkGray]
+		UINavigationBar.appearance().tintColor = #colorLiteral(red: 0.6588235294, green: 0.697444727, blue: 1, alpha: 1)
+		UITabBar.appearance().tintColor = #colorLiteral(red: 0.6588235294, green: 0.697444727, blue: 1, alpha: 1)
+
 		let params = [ "username" : username,
 		"password": password]
 
