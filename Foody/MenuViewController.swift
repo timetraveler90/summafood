@@ -167,49 +167,72 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let userID = UserDefaults.standard.integer(forKey: "userID")
         let url = "http://uc-dev.voiceworks.com:4000/external/user_orders"
 
-		if let menu = model.menu {
 
-			let mondayFood = Int.random(in: 2...menu.availableFood.monday.count)
-			let mondayFoodString = String(mondayFood)
+		let alert = UIAlertController(
+			title: "Food roulette!",
+			message: "Are you really sure you want to gamble with your order?",
+			preferredStyle: .alert
+		)
 
-			let tuesdayFood = Int.random(in: 2...menu.availableFood.tuesday.count)
-			let tuesdayFoodString = String(tuesdayFood)
+		let cancel = UIAlertAction(
+			title: "Cancel",
+			style: .destructive,
+			handler: nil)
 
-			let wednesdayFood = Int.random(in: 2...menu.availableFood.wednesday.count)
-			let wednesdayFoodString = String(wednesdayFood)
+		let gamble = UIAlertAction(
+			title: "Gamble!",
+			style: .default,
+			handler: { _ in
+					if let menu = model.menu {
 
-			let thursdayFood = Int.random(in: 2...menu.availableFood.thursday.count)
-			let thursdayFoodString = String(thursdayFood)
+						let mondayFood = Int.random(in: 2...menu.availableFood.monday.count)
+						let mondayFoodString = String(mondayFood)
 
-			let fridayFood = Int.random(in: 2...menu.availableFood.friday.count)
-			let fridayFoodString = String(fridayFood)
+						let tuesdayFood = Int.random(in: 2...menu.availableFood.tuesday.count)
+						let tuesdayFoodString = String(tuesdayFood)
 
-			let foodDict = [
-				"monday": mondayFoodString,
-				"tuesday": tuesdayFoodString,
-				"wednesday": wednesdayFoodString,
-				"thursday": thursdayFoodString,
-				"friday": fridayFoodString
-			]
+						let wednesdayFood = Int.random(in: 2...menu.availableFood.wednesday.count)
+						let wednesdayFoodString = String(wednesdayFood)
 
-			let parameters = [
-				"user_id": userID,
-				"offered_meal": foodDict
-			] as [String : Any]
+						let thursdayFood = Int.random(in: 2...menu.availableFood.thursday.count)
+						let thursdayFoodString = String(thursdayFood)
 
-			let header = ["Content-Type": "application/json",
-						  "Accept": "application/json"
-			]
+						let fridayFood = Int.random(in: 2...menu.availableFood.friday.count)
+						let fridayFoodString = String(fridayFood)
 
-			Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
-					.validate(statusCode: 200..<600)
-					.responseJSON { response in
+						let foodDict = [
+							"monday": mondayFoodString,
+							"tuesday": tuesdayFoodString,
+							"wednesday": wednesdayFoodString,
+							"thursday": thursdayFoodString,
+							"friday": fridayFoodString
+						]
 
-						let alert = UIAlertController(title: "Success", message: "The form is successfully submited.", preferredStyle: .alert)
-						alert.addAction(UIAlertAction(title: "Done!", style: .default, handler: nil))
-						self.present(alert, animated: true, completion: nil)
+						let parameters = [
+							"user_id": userID,
+							"offered_meal": foodDict
+						] as [String : Any]
+
+						let header = ["Content-Type": "application/json",
+									  "Accept": "application/json"
+						]
+
+						Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+								.validate(statusCode: 200..<600)
+								.responseJSON { response in
+
+									let alert = UIAlertController(title: "Success", message: "The form is successfully submited.", preferredStyle: .alert)
+									alert.addAction(UIAlertAction(title: "Done!", style: .default, handler: nil))
+									self.present(alert, animated: true, completion: nil)
+								}
 					}
-		}
+		})
+
+		alert.addAction(gamble)
+		alert.addAction(cancel)
+		alert.preferredAction = gamble
+		self.present(alert, animated: true, completion: nil)
+
     }
 
     fileprivate func submit() {
