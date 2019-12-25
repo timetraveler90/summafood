@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SafariServices
 
 class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -114,7 +115,36 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
 	}
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		self.performSegue(withIdentifier: "foodDetailsSegue", sender: nil)
+
+		let food = orders[indexPath.row]
+
+		if indexPath.section == 0 {
+			let filteredStringMonday = food.monday.replaceBlankWithPlus()
+			guard let mondayUrl = URL(string: "https://www.google.com/search?q=\(filteredStringMonday)") else { return }
+			let vc = SFSafariViewController(url: mondayUrl)
+			present(vc, animated: true, completion: nil)
+		} else if indexPath.section == 1 {
+			let filteredStringTuesday = food.tuesday.replaceBlankWithPlus()
+			guard let tuesdayUrl = URL(string: "https://www.google.com/search?q=\(filteredStringTuesday)") else { return }
+			let vc = SFSafariViewController(url: tuesdayUrl)
+			present(vc, animated: true, completion: nil)
+		} else if indexPath.section == 2 {
+			let filteredStringWednesday = food.wednesday.replaceBlankWithPlus()
+			guard let wednesdayUrl = URL(string: "https://www.google.com/search?q=\(filteredStringWednesday)") else { return }
+			let vc = SFSafariViewController(url: wednesdayUrl)
+			present(vc, animated: true, completion: nil)
+		} else if indexPath.section == 3 {
+			let filteredStringThursday = food.thursday.replaceBlankWithPlus()
+			guard let thursdayUrl = URL(string: "https://www.google.com/search?q=\(filteredStringThursday)") else { return }
+			let vc = SFSafariViewController(url: thursdayUrl)
+			present(vc, animated: true, completion: nil)
+		} else if indexPath.section == 4 {
+			let filteredStringFriday = food.friday.replaceBlankWithPlus()
+			guard let fridayUrl = URL(string: "https://www.google.com/search?q=\(filteredStringFriday)") else { return }
+			let vc = SFSafariViewController(url: fridayUrl)
+			present(vc, animated: true, completion: nil)
+		}
+
 	}
 
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -210,3 +240,13 @@ extension Date {
     }
   }
 }
+
+extension String {
+   func replace(string:String, replacement:String) -> String {
+	   return self.replacingOccurrences(of: string, with: replacement, options: NSString.CompareOptions.literal, range: nil)
+   }
+
+   func replaceBlankWithPlus() -> String {
+	   return self.replace(string: " ", replacement: "+")
+   }
+ }

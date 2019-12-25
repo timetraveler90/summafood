@@ -67,7 +67,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
 			let food = sortedFood[indexPath.item] as FoodName
-			print("\(food)")
             cell.foodNameLabel.text = food.name
 
             if (selectedFood[collectionView.tag] == food.id) {
@@ -95,10 +94,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let menu = model.menu {
             let allDays = [menu.availableFood.monday, menu.availableFood.tuesday, menu.availableFood.wednesday, menu.availableFood.thursday, menu.availableFood.friday]
             let selected = allDays[collectionView.tag][indexPath.item] as FoodName
-
-			print(selected.id)
-			print(selected.name)
-			print(indexPath)
 
             if (selectedFood[collectionView.tag] == selected.id) {
                 selectedFood[collectionView.tag] = nil
@@ -197,7 +192,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let fridayFoodString = String(fridayFood)
 
         let foodDict = [
-            "monday": mondayFoodString,
+			"monday": mondayFoodString,
             "tuesday": tuesdayFoodString,
             "wednesday": wednesdayFoodString,
             "thursday": thursdayFoodString,
