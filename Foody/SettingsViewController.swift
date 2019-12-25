@@ -50,8 +50,8 @@ class SettingsViewController: UIViewController, UICollectionViewDataSource, UICo
         label.text = "\(food.name)"
 
         if (model.favoriteFood.contains(food)) {
-            cell.contentView.layer.borderWidth = 2
-            cell.contentView.layer.borderColor = UIColor.red.cgColor
+            cell.contentView.layer.borderWidth = 4
+			cell.contentView.layer.borderColor = #colorLiteral(red: 0.6588235294, green: 0.9294117647, blue: 0.9176470588, alpha: 1)
         } else {
             cell.contentView.layer.borderWidth = 0
         }
@@ -70,8 +70,8 @@ class SettingsViewController: UIViewController, UICollectionViewDataSource, UICo
 
         let cell = collectionView.cellForItem(at: indexPath) as! SettingsCollectionViewCell
         if (model.favoriteFood.contains(selectedFood)) {
-            cell.contentView.layer.borderWidth = 2
-            cell.contentView.layer.borderColor = UIColor.red.cgColor
+            cell.contentView.layer.borderWidth = 4
+            cell.contentView.layer.borderColor = #colorLiteral(red: 0.9960784314, green: 0.8392156863, blue: 0.8901960784, alpha: 1)
         } else {
             cell.contentView.layer.borderWidth = 0
         }

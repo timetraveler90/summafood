@@ -12,10 +12,5 @@ class SettingsCollectionViewCell: UICollectionViewCell {
     
 	@IBOutlet weak var settingFoodNameLabel: UILabel!
 
-	@IBOutlet weak var view: UIView! {
-		didSet {
-			view.layer.cornerRadius = 0.5 * view.bounds.size.width
-			view.layer.masksToBounds = true
-		}
-	}
+	@IBOutlet weak var view: UIView!
 }
