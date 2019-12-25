@@ -166,19 +166,19 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let userID = UserDefaults.standard.integer(forKey: "userID")
         let url = "http://uc-dev.voiceworks.com:4000/external/user_orders"
 
-        guard let mondayFood = selectedFood[0] else { return }
+		let mondayFood = selectedFood[0] ?? 1
         let mondayFoodString = String(mondayFood)
 
-        guard let tuesdayFood = selectedFood[1] else { return }
+		let tuesdayFood = selectedFood[1] ?? 1
         let tuesdayFoodString = String(tuesdayFood)
 
-        guard let wednesdayFood = selectedFood[2] else {return }
+		let wednesdayFood = selectedFood[2] ?? 1
         let wednesdayFoodString = String(wednesdayFood)
 
-        guard let thursdayFood = selectedFood[3] else { return }
+		let thursdayFood = selectedFood[3] ?? 1
         let thursdayFoodString = String(thursdayFood)
 
-        guard let fridayFood = selectedFood[4] else { return }
+		let fridayFood = selectedFood[4] ?? 1
         let fridayFoodString = String(fridayFood)
 
         let foodDict = [
@@ -192,7 +192,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let parameters = [
             "user_id": userID,
             "offered_meal": foodDict
-        ] as [String: Any]
+		] as [String : Any]
 
         let header = ["Content-Type": "application/json",
                       "Accept": "application/json"
