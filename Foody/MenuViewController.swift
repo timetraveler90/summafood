@@ -204,6 +204,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 			title: "Gamble!",
 			style: .default,
 			handler: { _ in
+				DispatchQueue.main.async {
 					if let menu = model.menu {
 
 						let mondayFood = Int.random(in: 2...menu.availableFood.monday.count)
@@ -234,19 +235,17 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 							"offered_meal": foodDict
 						] as [String : Any]
 
-						let header = ["Content-Type": "application/json",
-									  "Accept": "application/json"
-						]
-
-						Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+						Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
 								.validate(statusCode: 200..<600)
 								.responseJSON { response in
 
-									let alert = UIAlertController(title: "Success", message: "The form is successfully submited.", preferredStyle: .alert)
+									print(NSString(data: (response.request?.httpBody)!, encoding: String.Encoding.utf8.rawValue)!)
+									let alert = UIAlertController(title: "Success!", message: "Head to Orders tab to see what you've got!", preferredStyle: .alert)
 									alert.addAction(UIAlertAction(title: "Done!", style: .default, handler: nil))
 									self.present(alert, animated: true, completion: nil)
 								}
 					}
+				}
 		})
 
 		alert.addAction(gamble)

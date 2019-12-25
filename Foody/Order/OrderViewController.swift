@@ -55,14 +55,9 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		let urlString = "http://uc-dev.voiceworks.com:4000/external/ordered_food/\(userId)"
 		guard let url = URL(string: urlString) else { return }
 
-		URLSession.shared.dataTask(with: url) { (data, _, err) in
-			DispatchQueue.main.async {
-				if let err = err {
-					print("Failed to get data from URL: ", err)
-					return
-				}
+		Alamofire.request(url, method: .get).validate().responseJSON { response in
 
-				guard let data = data else { return }
+			guard let data = response.data else { return }
 				let decoder = JSONDecoder()
 
 				do {
@@ -72,9 +67,7 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
 				} catch let jsonErr {
 					print("Failed to decode: ", jsonErr)
 				}
-
-			}
-		}.resume()
+		}
 	}
 
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
