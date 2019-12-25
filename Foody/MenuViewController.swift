@@ -137,6 +137,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
+		gamble()
         submit()
         model.fetchData {
             self.tableView.reloadData()
@@ -156,6 +157,59 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 		tableView.reloadData()
+    }
+
+	fileprivate func gamble() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Gamble", style: .done, target: self, action: #selector(randomizeTheFoodOrder))
+    }
+
+	@objc func randomizeTheFoodOrder() {
+        let userID = UserDefaults.standard.integer(forKey: "userID")
+        let url = "http://uc-dev.voiceworks.com:4000/external/user_orders"
+
+		if let menu = model.menu {
+
+			let mondayFood = Int.random(in: 2...menu.availableFood.monday.count)
+			let mondayFoodString = String(mondayFood)
+
+			let tuesdayFood = Int.random(in: 2...menu.availableFood.tuesday.count)
+			let tuesdayFoodString = String(tuesdayFood)
+
+			let wednesdayFood = Int.random(in: 2...menu.availableFood.wednesday.count)
+			let wednesdayFoodString = String(wednesdayFood)
+
+			let thursdayFood = Int.random(in: 2...menu.availableFood.thursday.count)
+			let thursdayFoodString = String(thursdayFood)
+
+			let fridayFood = Int.random(in: 2...menu.availableFood.friday.count)
+			let fridayFoodString = String(fridayFood)
+
+			let foodDict = [
+				"monday": mondayFoodString,
+				"tuesday": tuesdayFoodString,
+				"wednesday": wednesdayFoodString,
+				"thursday": thursdayFoodString,
+				"friday": fridayFoodString
+			]
+
+			let parameters = [
+				"user_id": userID,
+				"offered_meal": foodDict
+			] as [String : Any]
+
+			let header = ["Content-Type": "application/json",
+						  "Accept": "application/json"
+			]
+
+			Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+					.validate(statusCode: 200..<600)
+					.responseJSON { response in
+
+						let alert = UIAlertController(title: "Success", message: "The form is successfully submited.", preferredStyle: .alert)
+						alert.addAction(UIAlertAction(title: "Done!", style: .default, handler: nil))
+						self.present(alert, animated: true, completion: nil)
+					}
+		}
     }
 
     fileprivate func submit() {
