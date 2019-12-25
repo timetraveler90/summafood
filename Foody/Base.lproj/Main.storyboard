@@ -110,15 +110,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SwZ-MP-quS">
-                                <rect key="frame" x="183" y="686" width="48" height="30"/>
-                                <state key="normal" title="Logout"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SwZ-MP-quS" customClass="GradientButton" customModule="Foody" customModuleProvider="target">
+                                <rect key="frame" x="147" y="670" width="120" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="hpD-DI-BpA"/>
+                                    <constraint firstAttribute="height" constant="50" id="ko6-5K-Icx"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="logoutButtonPressed:" destination="hXy-87-Cwr" eventType="touchUpInside" id="WOO-fm-60O"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tDm-uj-VxC">
-                                <rect key="frame" x="0.0" y="56" width="414" height="590"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="588"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zVk-Gj-mRp">
                                     <size key="itemSize" width="120" height="120"/>
@@ -181,10 +190,10 @@
                         <constraints>
                             <constraint firstItem="tDm-uj-VxC" firstAttribute="leading" secondItem="65f-gM-gUQ" secondAttribute="leading" id="0s4-Xz-roW"/>
                             <constraint firstItem="65f-gM-gUQ" firstAttribute="trailing" secondItem="tDm-uj-VxC" secondAttribute="trailing" id="1CU-qt-8PC"/>
-                            <constraint firstItem="SwZ-MP-quS" firstAttribute="centerX" secondItem="65f-gM-gUQ" secondAttribute="centerX" id="2Md-5z-MQu"/>
-                            <constraint firstItem="65f-gM-gUQ" firstAttribute="bottom" secondItem="SwZ-MP-quS" secondAttribute="bottom" constant="43" id="6Dj-dC-ENY"/>
-                            <constraint firstItem="SwZ-MP-quS" firstAttribute="top" secondItem="tDm-uj-VxC" secondAttribute="bottom" constant="40" id="HDO-ap-9sD"/>
+                            <constraint firstItem="65f-gM-gUQ" firstAttribute="bottom" secondItem="SwZ-MP-quS" secondAttribute="bottom" constant="39" id="Ay2-3n-89N"/>
                             <constraint firstItem="tDm-uj-VxC" firstAttribute="top" secondItem="65f-gM-gUQ" secondAttribute="top" id="NvX-M6-TLy"/>
+                            <constraint firstItem="SwZ-MP-quS" firstAttribute="centerX" secondItem="65f-gM-gUQ" secondAttribute="centerX" id="YLP-mu-2Ll"/>
+                            <constraint firstItem="SwZ-MP-quS" firstAttribute="top" secondItem="tDm-uj-VxC" secondAttribute="bottom" constant="26" id="yMc-1h-RTQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="65f-gM-gUQ"/>
                     </view>

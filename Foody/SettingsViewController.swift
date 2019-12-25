@@ -36,7 +36,6 @@ class SettingsViewController: UIViewController, UICollectionViewDataSource, UICo
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.title = "Select favorite food"
 		self.navigationController?.title = "Favorite food"
     }
 
@@ -78,8 +77,6 @@ class SettingsViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
 
-    // MARK: Actions
-
     @IBAction func logoutButtonPressed(_ sender: Any) {
         // removing of userId after logout
         UserDefaults.standard.setValue(nil, forKey: "userID")
@@ -96,4 +93,43 @@ class SettingsViewController: UIViewController, UICollectionViewDataSource, UICo
 
     }
 
+}
+
+class GradientButton: UIButton {
+    override func awakeFromNib() {
+
+        layoutIfNeeded()
+
+        let gradientBorder = CAGradientLayer()
+        gradientBorder.frame = bounds
+        gradientBorder.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientBorder.endPoint = CGPoint(x: 1, y: 0.5)
+		let color1 = #colorLiteral(red: 0.1882352941, green: 0.8117647059, blue: 0.8156862745, alpha: 1).cgColor
+		let color2 = #colorLiteral(red: 0.2, green: 0.03137254902, blue: 0.4039215686, alpha: 1).cgColor
+        gradientBorder.colors = [color1, color2]
+
+        let shape = CAShapeLayer()
+        shape.lineWidth = 2
+        shape.path = UIBezierPath(rect: bounds).cgPath
+        shape.strokeColor = UIColor.black.cgColor
+        shape.fillColor = UIColor.clear.cgColor
+        gradientBorder.mask = shape
+
+        layer.addSublayer(gradientBorder)
+
+        let gradient = CAGradientLayer()
+        gradient.frame = bounds
+        gradient.startPoint = CGPoint(x: 0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1, y: 0.5)
+        gradient.colors = [color1, color2]
+
+        layer.insertSublayer(gradient, at: 0)
+
+        let overlayView = UIView(frame: bounds)
+        overlayView.isUserInteractionEnabled = false
+        overlayView.layer.insertSublayer(gradient, at: 0)
+        overlayView.mask = titleLabel
+
+        addSubview(overlayView)
+    }
 }
