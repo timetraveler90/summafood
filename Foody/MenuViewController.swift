@@ -76,7 +76,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             if (selectedFood[collectionView.tag] == food.id) {
                 cell.contentView.layer.borderColor = #colorLiteral(red: 0.6588235294, green: 0.9294117647, blue: 0.9176470588, alpha: 1)
-                cell.contentView.layer.borderWidth = 4
+                cell.contentView.layer.borderWidth = 8
             } else {
                 cell.contentView.layer.borderWidth = 0
             }
