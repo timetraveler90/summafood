@@ -117,6 +117,12 @@ class LoginViewController: UIViewController {
 
 	}
 
+	override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+		get {
+			return .portrait
+		}
+	}
+
 	private func prepareKeyboardInteractions() {
 		NotificationCenter.default.addObserver(
 			self,
