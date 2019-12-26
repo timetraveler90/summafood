@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsX-DP-WEd" customClass="ButtonGradient" customModule="Foody" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsX-DP-WEd">
                                 <rect key="frame" x="143" y="752" width="128" height="30"/>
                                 <color key="backgroundColor" red="0.6588235294117647" green="0.92941176470588238" blue="0.91764705882352937" alpha="0.90014982876712324" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
