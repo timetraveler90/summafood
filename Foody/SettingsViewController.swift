@@ -39,6 +39,14 @@ class SettingsViewController: UIViewController, UICollectionViewDataSource, UICo
 		self.navigationController?.title = "Favorite food"
     }
 
+	override func viewWillLayoutSubviews() {
+		if UIDevice.current.orientation.isLandscape {
+			self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(landscapeLogout))
+		} else {
+			self.navigationItem.rightBarButtonItem = nil
+		}
+	}
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         foodList.count
     }
@@ -76,6 +84,21 @@ class SettingsViewController: UIViewController, UICollectionViewDataSource, UICo
             cell.contentView.layer.borderWidth = 0
         }
     }
+
+	@objc func landscapeLogout() {
+		// removing of userId after logout
+	   UserDefaults.standard.setValue(nil, forKey: "userID")
+
+	   let keychain = KeychainSwift()
+	   keychain.delete(keychainUsername)
+	   keychain.delete(keychainPassword)
+	   keychain.clear()
+
+	   let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+	   let loginVC = mainStoryBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+	   let appDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+	   appDel.window?.rootViewController = loginVC
+	}
 
     @IBAction func logoutButtonPressed(_ sender: Any) {
         // removing of userId after logout
