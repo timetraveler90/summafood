@@ -228,29 +228,29 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 						for n in numbersToSkip {
 							if tuesdayRange.contains(n) {
-								let mondayFood = Int.random(in: tuesdayRange)
-								tuesdayFoodString = String(mondayFood)
+								let tuesdayFood = Int.random(in: tuesdayRange)
+								tuesdayFoodString = String(tuesdayFood)
 							}
 						}
 
 						for n in numbersToSkip {
 							if wednesdayRange.contains(n) {
-								let mondayFood = Int.random(in: wednesdayRange)
-								wednesdayFoodString = String(mondayFood)
+								let wednesdayFood = Int.random(in: wednesdayRange)
+								wednesdayFoodString = String(wednesdayFood)
 							}
 						}
 
 						for n in numbersToSkip {
 							if thursdayRange.contains(n) {
-								let mondayFood = Int.random(in: thursdayRange)
-								thursdayFoodString = String(mondayFood)
+								let thursdayFood = Int.random(in: thursdayRange)
+								thursdayFoodString = String(thursdayFood)
 							}
 						}
 
 						for n in numbersToSkip {
 							if fridayRange.contains(n) {
-								let mondayFood = Int.random(in: fridayRange)
-								fridayFoodString = String(mondayFood)
+								let fridayFood = Int.random(in: fridayRange)
+								fridayFoodString = String(fridayFood)
 							}
 						}
 
