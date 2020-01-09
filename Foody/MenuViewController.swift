@@ -206,60 +206,39 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 			handler: { _ in
 				DispatchQueue.main.async {
 					if let menu = model.menu {
-						let numbersToSkip = [120, 25, 114, 107, 95, 88, 84, 74, 66, 49, 43, 38, 16]
-						var mondayFoodString : String = ""
-						var tuesdayFoodString : String = ""
-						var wednesdayFoodString : String = ""
-						var thursdayFoodString : String = ""
-						var fridayFoodString : String = ""
+						var secondMenu = menu
 
-						let mondayRange = 2...menu.availableFood.monday.count
-						let tuesdayRange = 2...menu.availableFood.tuesday.count
-						let wednesdayRange = 2...menu.availableFood.wednesday.count
-						let thursdayRange = 2...menu.availableFood.thursday.count
-						let fridayRange = 2...menu.availableFood.friday.count
-
-						for n in numbersToSkip {
-							if mondayRange.contains(n) {
-								let mondayFood = Int.random(in: mondayRange)
-								mondayFoodString = String(mondayFood)
-							}
+						secondMenu.availableFood.monday.removeAll { (food) -> Bool in
+							food.name == "Nista"
 						}
+						let mondayRange = secondMenu.availableFood.monday.randomElement()?.id ?? 2
 
-						for n in numbersToSkip {
-							if tuesdayRange.contains(n) {
-								let tuesdayFood = Int.random(in: tuesdayRange)
-								tuesdayFoodString = String(tuesdayFood)
-							}
+						secondMenu.availableFood.tuesday.removeAll { (food) -> Bool in
+							food.name == "Nista"
 						}
+						let tuesdayRange = secondMenu.availableFood.tuesday.randomElement()?.id ?? 2
 
-						for n in numbersToSkip {
-							if wednesdayRange.contains(n) {
-								let wednesdayFood = Int.random(in: wednesdayRange)
-								wednesdayFoodString = String(wednesdayFood)
-							}
+						secondMenu.availableFood.wednesday.removeAll { (food) -> Bool in
+							food.name == "Nista"
 						}
+						let wednesdayRange = secondMenu.availableFood.wednesday.randomElement()?.id ?? 2
 
-						for n in numbersToSkip {
-							if thursdayRange.contains(n) {
-								let thursdayFood = Int.random(in: thursdayRange)
-								thursdayFoodString = String(thursdayFood)
-							}
+						secondMenu.availableFood.thursday.removeAll { (food) -> Bool in
+							food.name == "Nista"
 						}
+						let thursdayRange = secondMenu.availableFood.thursday.randomElement()?.id ?? 2
 
-						for n in numbersToSkip {
-							if fridayRange.contains(n) {
-								let fridayFood = Int.random(in: fridayRange)
-								fridayFoodString = String(fridayFood)
-							}
+						secondMenu.availableFood.friday.removeAll { (food) -> Bool in
+							food.name == "Nista"
 						}
+						let fridayRange = secondMenu.availableFood.friday.randomElement()?.id ?? 2
 
 						let foodDict = [
-							"monday": mondayFoodString,
-							"tuesday": tuesdayFoodString,
-							"wednesday": wednesdayFoodString,
-							"thursday": thursdayFoodString,
-							"friday": fridayFoodString
+							"monday": "\(mondayRange)",
+							"tuesday": "\(tuesdayRange)",
+							"wednesday": "\(wednesdayRange)",
+							"thursday": "\(thursdayRange)",
+							"friday": "\(fridayRange)"
 						]
 
 						let parameters = [
