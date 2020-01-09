@@ -136,7 +136,6 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
 																			.replacingOccurrences(of: "ž", with: "z")
 																			.replacingOccurrences(of: "đ", with: "dj")
 			guard let wednesdayUrl = URL(string: "https://www.google.com/search?q=\(filteredStringWednesday)") else { return }
-			print(wednesdayUrl)
 			let vc = SFSafariViewController(url: wednesdayUrl)
 			present(vc, animated: true, completion: nil)
 		} else if indexPath.section == 3 {

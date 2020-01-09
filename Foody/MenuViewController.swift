@@ -250,7 +250,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 								.validate(statusCode: 200..<600)
 								.responseJSON { response in
 
-									print(NSString(data: (response.request?.httpBody)!, encoding: String.Encoding.utf8.rawValue)!)
 									let alert = UIAlertController(title: "Success!", message: "Head to Orders tab to see what you've got!", preferredStyle: .alert)
 									alert.addAction(UIAlertAction(title: "Done!", style: .default, handler: nil))
 									self.present(alert, animated: true, completion: nil)
