@@ -112,32 +112,52 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		let food = orders[indexPath.row]
 
 		if indexPath.section == 0 {
-			let filteredStringMonday = food.monday.replaceBlankWithPlus()
+			let filteredStringMonday = food.monday.replaceBlankWithPlus().replacingOccurrences(of: "š", with: "s")
+																		.replacingOccurrences(of: "ć", with: "c")
+																		.replacingOccurrences(of: "č", with: "c")
+																		.replacingOccurrences(of: "ž", with: "z")
+																		.replacingOccurrences(of: "đ", with: "dj")
 			guard let mondayUrl = URL(string: "https://www.google.com/search?q=\(filteredStringMonday)") else { return }
 			let vc = SFSafariViewController(url: mondayUrl)
 			present(vc, animated: true, completion: nil)
 		} else if indexPath.section == 1 {
-			let filteredStringTuesday = food.tuesday.replaceBlankWithPlus()
+			let filteredStringTuesday = food.tuesday.replaceBlankWithPlus().replacingOccurrences(of: "š", with: "s")
+																			.replacingOccurrences(of: "ć", with: "c")
+																			.replacingOccurrences(of: "č", with: "c")
+																			.replacingOccurrences(of: "ž", with: "z")
+																			.replacingOccurrences(of: "đ", with: "dj")
 			guard let tuesdayUrl = URL(string: "https://www.google.com/search?q=\(filteredStringTuesday)") else { return }
 			let vc = SFSafariViewController(url: tuesdayUrl)
 			present(vc, animated: true, completion: nil)
 		} else if indexPath.section == 2 {
-			let filteredStringWednesday = food.wednesday.replaceBlankWithPlus()
+			let filteredStringWednesday = food.wednesday.replaceBlankWithPlus().replacingOccurrences(of: "š", with: "s")
+																			.replacingOccurrences(of: "ć", with: "c")
+																			.replacingOccurrences(of: "č", with: "c")
+																			.replacingOccurrences(of: "ž", with: "z")
+																			.replacingOccurrences(of: "đ", with: "dj")
 			guard let wednesdayUrl = URL(string: "https://www.google.com/search?q=\(filteredStringWednesday)") else { return }
+			print(wednesdayUrl)
 			let vc = SFSafariViewController(url: wednesdayUrl)
 			present(vc, animated: true, completion: nil)
 		} else if indexPath.section == 3 {
-			let filteredStringThursday = food.thursday.replaceBlankWithPlus()
+			let filteredStringThursday = food.thursday.replaceBlankWithPlus().replacingOccurrences(of: "š", with: "s")
+																			.replacingOccurrences(of: "ć", with: "c")
+																			.replacingOccurrences(of: "č", with: "c")
+																			.replacingOccurrences(of: "ž", with: "z")
+																			.replacingOccurrences(of: "đ", with: "dj")
 			guard let thursdayUrl = URL(string: "https://www.google.com/search?q=\(filteredStringThursday)") else { return }
 			let vc = SFSafariViewController(url: thursdayUrl)
 			present(vc, animated: true, completion: nil)
 		} else if indexPath.section == 4 {
-			let filteredStringFriday = food.friday.replaceBlankWithPlus()
+			let filteredStringFriday = food.friday.replaceBlankWithPlus().replacingOccurrences(of: "š", with: "s")
+																		.replacingOccurrences(of: "ć", with: "c")
+																		.replacingOccurrences(of: "č", with: "c")
+																		.replacingOccurrences(of: "ž", with: "z")
+																		.replacingOccurrences(of: "đ", with: "dj")
 			guard let fridayUrl = URL(string: "https://www.google.com/search?q=\(filteredStringFriday)") else { return }
 			let vc = SFSafariViewController(url: fridayUrl)
 			present(vc, animated: true, completion: nil)
 		}
-
 	}
 
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
