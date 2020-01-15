@@ -37,10 +37,10 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		// date formating and displaying in the title
 		let dateFormat = DateFormatter()
 		dateFormat.dateFormat = "dd-MM-yy"
-		let thisWeek = Date.today()
-		let thisWeekFormated = dateFormat.string(from: thisWeek)
+		let nextWeek = Date.today().next(.monday)
+		let nextWeekFormated = dateFormat.string(from: nextWeek)
 
-		self.title = "Ordered food for: \(thisWeekFormated)"
+		self.title = "Orders for: \(nextWeekFormated)"
 		self.navigationController?.title = "Orders"
 
     }
